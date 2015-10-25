@@ -1,0 +1,137 @@
+package RW.Client.RenderUtils;
+
+import org.lwjgl.opengl.GL11;
+
+import RW.Common.Misc.WorldPos;
+import RW.Utils.PositionedWorld;
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
+
+public class Cube extends ModelBase
+{
+	public float px = 0;
+	public float py = 0;
+	public float pz = 0;
+
+	public int dx = 16;
+	public int dy = 16;
+	public int dz = 16;
+
+	public float angle = 0;
+
+	public float rotationx;
+	public float rotationy;
+	public float rotationz;
+
+	public float scale = 1/3;
+
+	public float offsetx = 0;
+	public float offsety = 0;
+	public float offsetz = 0;
+
+	public float textoffsetx = 0;
+	public float textoffsety = 0;
+
+	public ModelRenderer shape;
+
+	public Cube()
+	{
+		this.textureWidth = 128;
+		this.textureHeight = 64;
+
+		this.shape = new ModelRenderer(this, 0, 0);
+		this.shape.setRotationPoint(this.offsetx, this.offsety, this.offsetz);
+		this.shape.addBox(this.px, this.py, this.pz, this.dx, this.dy, this.dz, this.scale/16);
+
+	}
+
+	public Cube(float px, float py, float pz, int dx, int dy, int dz, float textoffsetx, float textoffsety,float scale,int texturelength)
+	{
+		this.textureWidth = 128;
+		this.textureHeight = 64;
+
+		this.px = px;
+		this.py = py;
+		this.pz = pz;
+		this.dx = dx;
+		this.dy = dy;
+		this.dz = dz;
+		
+		this.rotationx=px;
+		this.rotationy=py;
+		this.rotationz=pz;
+		
+		this.scale=(float) scale/texturelength;
+						
+		this.shape = new ModelRenderer(this, 0, 0);
+		this.shape.setRotationPoint(this.rotationx, this.rotationy, this.rotationz);
+		this.shape.addBox(this.px, this.py, this.pz, this.dx, this.dy, this.dz, scale);
+	}
+
+	public void render(ResourceLocation texture)
+	{
+		Tessellator t = Tessellator.instance;
+
+		GL11.glPushMatrix();
+		GL11.glTranslatef(this.px, this.py+4*this.scale, this.pz);
+
+		GL11.glScalef(this.scale, this.scale, this.scale);
+
+		GL11.glRotatef(this.angle, this.rotationx, this.rotationy, this.rotationz);
+		if(texture != null)
+		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
+		
+		this.shape.render(1.0F);
+		
+		GL11.glPopMatrix();
+	}
+	
+	/**
+	 * Currently not working
+	 * @param b
+	 */
+	@Deprecated
+	public void render(Block b)
+	{
+		Tessellator t = Tessellator.instance;
+
+		GL11.glPushMatrix();
+		GL11.glTranslatef(this.px, this.py, this.pz);
+
+		GL11.glScalef(1, 1, 1);
+
+		GL11.glRotatef(this.angle, this.rotationx, this.rotationy, this.rotationz);
+		
+		IIcon i = RenderBlocks.getInstance().getBlockIcon(b);
+		ResourceLocation text = new ResourceLocation(i.getIconName());
+		
+		this.shape.render(1.0F);
+
+		GL11.glPopMatrix();
+	}
+
+	public void setRotation(int angle, int rotx, int roty, int rotz)
+	{
+		this.angle = angle;
+		this.rotationx=rotx;
+		this.rotationy=roty;
+		this.rotationz=rotz;
+	}
+
+	public void setBounds(int px, int py, int pz, int dx, int dy, int dz)
+	{
+		this.px = px;
+		this.py = py;
+		this.pz = pz;
+		this.dx = dx;
+		this.dy = dy;
+		this.dz = dz;
+	}
+}
