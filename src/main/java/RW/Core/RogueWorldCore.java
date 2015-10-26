@@ -96,7 +96,8 @@ public class RogueWorldCore {
 			MinecraftForge.EVENT_BUS.register(new PlayerTracker());
 			{
 				this.BCore.register();
-				if (BCore.getFirstNotOccupiedSlotFor(BCore.simpleBlocks) < 0) {
+				if (BCore.getFirstNotOccupiedSlotFor(BCore.simpleBlocks) < 0) 
+				{
 					Logger.warn(
 							"Couldn't Load " + BCore.simpleBlocks.length + "'s Block. Expand Block Array to load it.");
 				}
