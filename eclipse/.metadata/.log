@@ -103,3 +103,50 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jdt.core 4 0 2015-10-26 09:38:18.940
 !MESSAGE Invalid ZIP archive: C:\Users\user\Work\Mods\RogueWorld\libs\ec3.jar
+
+!ENTRY org.eclipse.wst.validation 4 0 2015-10-26 10:50:11.731
+!MESSAGE 
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.core.internal.plugins.PluginDescriptor.doPluginActivation(PluginDescriptor.java:357)
+	at org.eclipse.core.internal.plugins.PluginDescriptor.getPlugin(PluginDescriptor.java:340)
+	at org.eclipse.core.runtime.Platform.getPlugin(Platform.java:743)
+	at org.eclipse.core.internal.preferences.legacy.InitLegacyPreferences.init(InitLegacyPreferences.java:45)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:147)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:369)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:222)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:276)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:404)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:657)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:796)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:38)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:74)
+	at org.eclipse.wst.validation.internal.delegates.ValidatorDelegatesRegistry.initDefaults(ValidatorDelegatesRegistry.java:70)
+	at org.eclipse.wst.validation.internal.delegates.ValidatorDelegatesRegistry.getInstance(ValidatorDelegatesRegistry.java:53)
+	at org.eclipse.wst.validation.internal.ValidationRegistryReader.readRegistry(ValidationRegistryReader.java:1343)
+	at org.eclipse.wst.validation.internal.ValidationRegistryReader.<init>(ValidationRegistryReader.java:116)
+	at org.eclipse.wst.validation.internal.ValidationRegistryReader.<clinit>(ValidationRegistryReader.java:78)
+	at org.eclipse.wst.validation.internal.ConfigurationConstants.<clinit>(ConfigurationConstants.java:31)
+	at org.eclipse.wst.validation.internal.ConfigurationManager.isMigrated(ConfigurationManager.java:227)
+	at org.eclipse.wst.validation.internal.EventManager.shutdown(EventManager.java:284)
+	at org.eclipse.wst.validation.internal.plugin.ValidationPlugin.stop(ValidationPlugin.java:116)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:823)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:965)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:333)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:621)
+	at org.eclipse.osgi.container.Module.stop(Module.java:483)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1623)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1542)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:248)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:141)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:621)
+	at org.eclipse.osgi.container.Module.stop(Module.java:483)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:186)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:159)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-10-26 10:50:11.762
+!MESSAGE The workspace will exit with unsaved changes in this session.

@@ -34,8 +34,7 @@ public class TessBlock extends BlockContainer
 	public boolean isOpaqueCube()
 	{
 		return false;
-	}
-	
+	}	
 	
 	public boolean isNormalCube()
 	{

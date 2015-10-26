@@ -13,10 +13,13 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-bin/*
+
+#Author files
+bin*
 *.jar
 *eclipse*
 *.metadata*
+*libs*
 
 # Windows shortcuts
 *.lnk
