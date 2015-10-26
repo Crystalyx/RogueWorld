@@ -41,6 +41,7 @@ public class Cube extends ModelBase
 
 	public ModelRenderer shape;
 
+	@Deprecated
 	public Cube()
 	{
 		this.textureWidth = 128;
@@ -51,7 +52,19 @@ public class Cube extends ModelBase
 		this.shape.addBox(this.px, this.py, this.pz, this.dx, this.dy, this.dz, this.scale/16);
 
 	}
-
+	/**
+	 * 
+	 * @param px minX
+	 * @param py minY
+	 * @param pz minZ
+	 * @param dx maxX
+	 * @param dy maxY
+	 * @param dz maxZ
+	 * @param textoffsetx textureOffsetX
+	 * @param textoffsety textureOffsetY
+	 * @param scale	modelScale
+	 * @param texturelength	textureSideLength
+	 */
 	public Cube(float px, float py, float pz, int dx, int dy, int dz, float textoffsetx, float textoffsety,float scale,int texturelength)
 	{
 		this.textureWidth = 128;
@@ -74,13 +87,15 @@ public class Cube extends ModelBase
 		this.shape.setRotationPoint(this.rotationx, this.rotationy, this.rotationz);
 		this.shape.addBox(this.px, this.py, this.pz, this.dx, this.dy, this.dz, scale);
 	}
-
+	/**
+	 * @param texture texture
+	 */
 	public void render(ResourceLocation texture)
 	{
 		Tessellator t = Tessellator.instance;
 
 		GL11.glPushMatrix();
-		GL11.glTranslatef(this.px, this.py+4*this.scale, this.pz);
+		GL11.glTranslatef(this.px, this.py+1*this.scale, this.pz);
 
 		GL11.glScalef(this.scale, this.scale, this.scale);
 
@@ -94,16 +109,14 @@ public class Cube extends ModelBase
 	}
 	
 	/**
-	 * Currently not working
-	 * @param b
+	 * @param b	block that should be rendered
 	 */
-	@Deprecated
 	public void render(Block b)
 	{
 		Tessellator t = Tessellator.instance;
 
 		GL11.glPushMatrix();
-		GL11.glTranslatef(this.px, this.py, this.pz);
+		GL11.glTranslatef(this.px, this.py-1/16, this.pz);
 
 		GL11.glScalef(1, 1, 1);
 
@@ -116,7 +129,14 @@ public class Cube extends ModelBase
 
 		GL11.glPopMatrix();
 	}
-
+	
+	/**
+	 * 	
+	 * @param angle	rotationAngle
+	 * @param rotx	vecX
+	 * @param roty	vecY
+	 * @param rotz	vecZ
+	 */
 	public void setRotation(int angle, int rotx, int roty, int rotz)
 	{
 		this.angle = angle;
@@ -124,7 +144,15 @@ public class Cube extends ModelBase
 		this.rotationy=roty;
 		this.rotationz=rotz;
 	}
-
+	/**
+	 * 
+	 * @param px minX
+	 * @param py minY
+	 * @param pz minZ
+	 * @param dx maxX
+	 * @param dy maxY
+	 * @param dz maxZ
+	 **/
 	public void setBounds(int px, int py, int pz, int dx, int dy, int dz)
 	{
 		this.px = px;

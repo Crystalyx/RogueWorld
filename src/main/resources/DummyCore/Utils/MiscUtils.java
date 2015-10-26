@@ -310,8 +310,6 @@ public class MiscUtils {
 		}
 	}
 	
-	
-	
 	/**
 	 * Used to send packets from SERVER to CLIENT.
 	 * @version From DummyCore 1.7

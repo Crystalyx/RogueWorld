@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 *.msp
 bin/*
 *.jar
+*eclipse*
 
 # Windows shortcuts
 *.lnk

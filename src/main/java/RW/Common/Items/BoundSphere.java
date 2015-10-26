@@ -3,8 +3,6 @@ package RW.Common.Items;
 import java.util.List;
 
 import DummyCore.Utils.StructureApi;
-import RW.Api.EnergeticTileEntity;
-import RW.Common.Misc.WorldPos;
 import RW.Common.Registry.BlockRegistry;
 import RW.Common.Registry.MiscRegistry;
 import RW.Core.RogueWorldCore;

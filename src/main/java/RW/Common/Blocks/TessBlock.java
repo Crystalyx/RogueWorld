@@ -15,7 +15,6 @@ public class TessBlock extends BlockContainer
 		super(Material.anvil);
 		this.setBlockTextureName("rogueWorld:null");
 		this.setCreativeTab(MiscRegistry.modTab);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.05F, 1.0F);
 		this.setBlockName("rw.tess");
 		this.setResistance(10.0F);
 		this.setHardness(10.0F);
@@ -45,7 +44,7 @@ public class TessBlock extends BlockContainer
 	
 	public int getRenderType()
 	{
-		return 0x8985;
+		return 0;
 	}
 
 }

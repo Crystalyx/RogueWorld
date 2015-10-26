@@ -12,27 +12,26 @@ import net.minecraft.util.ResourceLocation;
 public class RenderUtils
 {
 	public static String id = RogueWorldCore.ModId;
+	/**
+	 * Rendering in inventory
+	 * @param r	RenderBlocks
+	 * @param b	block To Render
+	 */
 	public static void renderBlock(RenderBlocks r,Block b)
 	{
-//		Cube block = new Cube();
-//		block.setBounds(0,0,0,2, 2, 2);
-//		block.render(b);
-		
 		GL11.glPushMatrix();
 		
 		r.renderBlockAllFaces(b, 0, 0, 0);
 		
 		GL11.glPopMatrix();
-		
 	}
 
-	public static void renderBlock(RenderBlocks r,Block b,int x,int y,int z)
+	public static void renderBlock(RenderBlocks r,Block b,double x,double y,double z)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
-		Cube block = new Cube();
-		block.setBounds(0,0,0,2, 2, 2);
-		block.render(b);
+		Cube cub = new Cube(0, 0, 0, 64, 64, 64, 0, 0,(float) 1,64);
+		cub.render(b);
 		GL11.glPopMatrix();
 	}
 	
