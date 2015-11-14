@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
 /**
- * DarkTower - Lord_Crystalyx Created using Tabula 4.1.1
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
  */
 public class DarkTower extends ModelBase implements IItemRenderer
 {

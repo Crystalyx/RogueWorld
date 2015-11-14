@@ -11,6 +11,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class BlockDeconstructor extends BlockContainer
 {
 
@@ -27,33 +30,33 @@ public class BlockDeconstructor extends BlockContainer
 	{
 		return new TileEntityDarkDeconstructor();
 	}
-	
+
 	public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float fx, float fy, float fz)
 	{
-		if(!p.isSneaking())
+		if (!p.isSneaking())
 		{
-			if(p.getCurrentEquippedItem() != null)
-			{ 
-				if(p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
+			if (p.getCurrentEquippedItem() != null)
+			{
+				if (p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
 				{
 					return false;
 				}
-			}		
+			}
 			p.openGui(RogueWorldCore.core, 4, w, x, y, z);
 		}
 		return true;
 	}
-	
+
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
-	
+
 	public boolean isNormalCube()
 	{
 		return false;
 	}
-	
+
 	public int getRenderType()
 	{
 		return 0x8978;

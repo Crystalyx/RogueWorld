@@ -23,6 +23,9 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityReactorCore extends TileEntity implements IInventory
 {
 	public ItemStack[] inv = new ItemStack[9];

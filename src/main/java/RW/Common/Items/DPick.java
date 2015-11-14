@@ -16,6 +16,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class DPick extends IDUPick
 {
 
@@ -26,25 +29,26 @@ public class DPick extends IDUPick
 		this.setUnlocalizedName("rw.darkpick");
 		this.setCreativeTab(MiscRegistry.modTab);
 	}
+
 	public NBTTagCompound tag = new NBTTagCompound();
 
 	public ItemStack onItemRightClick(ItemStack i, World w, EntityPlayer p)
 	{
-		if(p.isSneaking())
+		if (p.isSneaking())
 		{
-			if(!i.hasTagCompound())
-			{	
+			if (!i.hasTagCompound())
+			{
 				tag.setFloat("Exp", 0);
 				tag.setInteger("Level", 1);
 				i.setTagCompound(tag);
 			}
 		}
-		return i;		
+		return i;
 	}
-	
+
 	public void onUpdate(ItemStack i, World w, Entity e, int p_77663_4_, boolean inhand)
 	{
-		if(i.getTagCompound() == null)
+		if (i.getTagCompound() == null)
 		{
 			tag.setFloat("Expirience", 0);
 			tag.setInteger("Level", 1);
@@ -52,11 +56,11 @@ public class DPick extends IDUPick
 		}
 		else
 		{
-			this.setHarvestLevel("pickaxe", i.getTagCompound().getInteger("Level")/3+1);
-			this.setHarvestLevel("shovel", i.getTagCompound().getInteger("Level")/3+1);
+			this.setHarvestLevel("pickaxe", i.getTagCompound().getInteger("Level") / 3 + 1);
+			this.setHarvestLevel("shovel", i.getTagCompound().getInteger("Level") / 3 + 1);
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack i, EntityPlayer p, List l, boolean bool)

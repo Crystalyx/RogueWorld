@@ -10,20 +10,23 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class BaseOre extends BlockOre
 {
-	public BaseOre(String uName, String texture, float hardness, float resist, RogueWorldCore mod,ItemStack dropped,boolean fortune,int xp)
+	public BaseOre(String uName, String texture, float hardness, float resist, RogueWorldCore mod, ItemStack dropped, boolean fortune, int xp)
 	{
 		this.setBlockName(uName);
 		this.setBlockTextureName(mod.ModId + ":" + texture);
 		this.setHardness(hardness);
 		this.setResistance(resist);
 		this.setCreativeTab(mod.MCore.modTab);
-		this.drop=dropped;
+		this.drop = dropped;
 		this.fortAffect = fortune;
-		this.xpdrop=xp;
+		this.xpdrop = xp;
 	}
-	
+
 	public BaseOre(String uName, String texture, float hardness, float resist, RogueWorldCore mod)
 	{
 		this.setBlockName(uName);
@@ -35,12 +38,12 @@ public class BaseOre extends BlockOre
 
 	public ItemStack drop;
 	public boolean fortAffect = true;
-	public int xpdrop=2;
+	public int xpdrop = 2;
 
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 	{
-		if(this.drop != null)
-		return this.drop.getItem();
+		if (this.drop != null)
+			return this.drop.getItem();
 		return Item.getItemFromBlock(this);
 	}
 
@@ -49,7 +52,7 @@ public class BaseOre extends BlockOre
 	 */
 	public int quantityDropped(Random p_149745_1_)
 	{
-		if(this.drop != null)
+		if (this.drop != null)
 			return this.drop.stackSize;
 		return 1;
 	}
@@ -72,7 +75,8 @@ public class BaseOre extends BlockOre
 				}
 
 				return this.quantityDropped(p_149679_2_) * (j + 1);
-			} else
+			}
+			else
 			{
 				return this.quantityDropped(p_149679_2_);
 			}
@@ -89,8 +93,8 @@ public class BaseOre extends BlockOre
 		if (this.getItemDropped(p_149690_5_, rand, p_149690_7_) != Item.getItemFromBlock(this))
 		{
 			int j1 = 0;
-			
-			j1 = MathHelper.getRandomIntegerInRange(rand, this.xpdrop-2, this.xpdrop);
+
+			j1 = MathHelper.getRandomIntegerInRange(rand, this.xpdrop - 2, this.xpdrop);
 
 			return j1;
 		}
@@ -103,8 +107,8 @@ public class BaseOre extends BlockOre
 	 */
 	public int damageDropped(int p_149692_1_)
 	{
-		if(this.drop != null)
+		if (this.drop != null)
 			return this.drop.getItemDamage();
-			return 0;
+		return 0;
 	}
 }

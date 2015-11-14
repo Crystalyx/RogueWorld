@@ -22,6 +22,9 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class AltarBasePillar extends BlockContainer
 {
 
@@ -78,28 +81,29 @@ public class AltarBasePillar extends BlockContainer
 						item.stackSize = 1;
 						((TileEntityPillar) w.getTileEntity(x, y, z)).setInventorySlotContents(0, item);
 						WorldPos[] poses = StructurePoses.poses.get(0);
-						WorldPos pos = poses[((TileEntityPillar)w.getTileEntity(x, y, z)).getIndex()].flip();
+						WorldPos pos = poses[((TileEntityPillar) w.getTileEntity(x, y, z)).getIndex()].flip();
 						int[] i = pos.toIntArray();
-						if (w.getTileEntity(x+i[0], y+i[1]+4, z+i[2]) instanceof TileEntityReactorCore)
+						if (w.getTileEntity(x + i[0], y + i[1] + 4, z + i[2]) instanceof TileEntityReactorCore)
 						{
-							((TileEntityReactorCore) w.getTileEntity(x+i[0], y+i[1]+4, z+i[2])).setInventorySlotContents(((TileEntityPillar)w.getTileEntity(x, y, z)).getIndex(), item);
+							((TileEntityReactorCore) w.getTileEntity(x + i[0], y + i[1] + 4, z + i[2])).setInventorySlotContents(((TileEntityPillar) w.getTileEntity(x, y, z)).getIndex(), item);
 						}
 						--p.getCurrentEquippedItem().stackSize;
 					}
 				}
 			}
-		} else
+		}
+		else
 		{
 			if (w.getTileEntity(x, y, z) instanceof TileEntityPillar)
 			{
-				MiscUtils.addItemStack(p,((IInventory)w.getTileEntity(x, y, z)).getStackInSlot(0));
+				MiscUtils.addItemStack(p, ((IInventory) w.getTileEntity(x, y, z)).getStackInSlot(0));
 				((TileEntityPillar) w.getTileEntity(x, y, z)).setInventorySlotContents(0, null);
 				WorldPos[] poses = StructurePoses.poses.get(0);
-				WorldPos pos = poses[((TileEntityPillar)w.getTileEntity(x, y, z)).getIndex()].flip();
+				WorldPos pos = poses[((TileEntityPillar) w.getTileEntity(x, y, z)).getIndex()].flip();
 				int[] i = pos.toIntArray();
-				if (w.getTileEntity(x+i[0], y+i[1]+4, z+i[2]) instanceof TileEntityReactorCore)
+				if (w.getTileEntity(x + i[0], y + i[1] + 4, z + i[2]) instanceof TileEntityReactorCore)
 				{
-					((TileEntityReactorCore) w.getTileEntity(x+i[0], y+i[1]+4, z+i[2])).setInventorySlotContents(((TileEntityPillar)w.getTileEntity(x, y, z)).getIndex(), null);
+					((TileEntityReactorCore) w.getTileEntity(x + i[0], y + i[1] + 4, z + i[2])).setInventorySlotContents(((TileEntityPillar) w.getTileEntity(x, y, z)).getIndex(), null);
 				}
 			}
 		}

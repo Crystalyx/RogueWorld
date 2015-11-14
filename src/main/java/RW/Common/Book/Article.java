@@ -2,6 +2,9 @@ package RW.Common.Book;
 
 import java.util.Hashtable;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class Article
 {
 	public Hashtable<Integer, IBookPage> Pages = new Hashtable<Integer, IBookPage>();

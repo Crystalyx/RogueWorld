@@ -10,6 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class ChapterPage extends IBookPage
 {
 	public Hashtable<Integer, Chapter> chapters;
@@ -22,13 +25,13 @@ public class ChapterPage extends IBookPage
 
 	public void drawPageTextureLeft(int width, int height, FontRenderer gui)
 	{
-		//super.drawPageTextureLeft(width, height);
+		// super.drawPageTextureLeft(width, height);
 
 		int k = (width - 256) / 2;
 		int l = (height - 256) / 2;
 
 		if (!this.chapters.isEmpty())
-			for (int i = 0; i < this.chapters.size() / 6+1; i++)
+			for (int i = 0; i < this.chapters.size() / 6 + 1; i++)
 			{
 				for (int j = 0; j < 4; j++)
 				{
@@ -38,7 +41,7 @@ public class ChapterPage extends IBookPage
 
 					if (chap.Icon instanceof Item)
 					{
-						this.drawItemStack(new ItemStack((Item) chap.Icon), k + 20, l + 20, this.text,gui);
+						this.drawItemStack(new ItemStack((Item) chap.Icon), k + 20, l + 20, this.text, gui);
 						// this.drawTexturedModalRect(k+20+20*i, l+20+20*j, 0,
 						// 0, (int) ((Item) chap.Icon).getIcon(new
 						// ItemStack((Item)chap.Icon), 0).getMaxU(), (int) (int)
@@ -54,7 +57,7 @@ public class ChapterPage extends IBookPage
 
 	public void drawPage(int width, int height, FontRenderer gui)
 	{
-		this.drawPageTextureLeft(width, height,gui);
+		this.drawPageTextureLeft(width, height, gui);
 		this.drawHeader(width, height, gui);
 	}
 

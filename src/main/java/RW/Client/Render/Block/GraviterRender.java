@@ -13,11 +13,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class GraviterRender implements ISimpleBlockRenderingHandler
 {
 	public ResourceLocation texture = new ResourceLocation("rogueWorld:textures/misc/model/graviter.png");
 	public Graviter model = new Graviter();
-	
+
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer)
 	{
@@ -30,9 +33,9 @@ public class GraviterRender implements ISimpleBlockRenderingHandler
 		texture = new ResourceLocation("rogueWorld:textures/misc/model/graviter.png");
 		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 		model.render(null, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		
+
 		GL11.glPopMatrix();
-		
+
 		RenderHelper.enableStandardItemLighting();
 
 	}

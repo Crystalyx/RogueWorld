@@ -7,10 +7,13 @@ import RW.Common.Registry.MiscRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class DarkPlanks extends Block
 {
 
-	public DarkPlanks(Material mat) 
+	public DarkPlanks(Material mat)
 	{
 		super(mat);
 		this.setCreativeTab(MiscRegistry.modTab);

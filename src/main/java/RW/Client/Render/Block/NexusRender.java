@@ -14,6 +14,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class NexusRender implements ISimpleBlockRenderingHandler
 {
 

@@ -18,6 +18,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityModificationAnvil extends EnergeticTileEntity implements IInventory
 {
 
@@ -72,7 +75,8 @@ public class TileEntityModificationAnvil extends EnergeticTileEntity implements 
 				if (this.inventory[0].getItemDamage() - (ccount * 40) < this.inventory[0].getMaxDamage())
 				{
 					this.inventory[0].setItemDamage(this.inventory[0].getItemDamage() - (ccount * 40));
-				} else
+				}
+				else
 					this.inventory[0].setItemDamage(0);
 			}
 		}
@@ -119,7 +123,7 @@ public class TileEntityModificationAnvil extends EnergeticTileEntity implements 
 		super.updateEntity();
 		if (this.isCrafting)
 		{
-//			if (!this.worldObj.isRemote)
+			// if (!this.worldObj.isRemote)
 			{
 				if (this.currrec == null)
 				{
@@ -131,9 +135,10 @@ public class TileEntityModificationAnvil extends EnergeticTileEntity implements 
 				{
 					if (this.currrec == ModificationAnvilRecipes.findRecipeFor(this))
 					{
-//						if (this.consumeEnergy(this.maxPacketSize) == 0)
-							--this.craftTime;
-					} else
+						// if (this.consumeEnergy(this.maxPacketSize) == 0)
+						--this.craftTime;
+					}
+					else
 					{
 						this.isCrafting = false;
 						return;
@@ -176,13 +181,15 @@ public class TileEntityModificationAnvil extends EnergeticTileEntity implements 
 				ItemStack ret = this.inventory[slot];
 				this.inventory[slot] = null;
 				return ret;
-			} else
+			}
+			else
 			{
 				ItemStack ret = new ItemStack(this.inventory[slot].getItem(), count, this.inventory[slot].getItemDamage());
 				this.inventory[slot].stackSize -= count;
 				return ret;
 			}
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -196,7 +203,8 @@ public class TileEntityModificationAnvil extends EnergeticTileEntity implements 
 			ItemStack itemstack = this.inventory[slot];
 			this.inventory[slot] = null;
 			return itemstack;
-		} else
+		}
+		else
 		{
 			return null;
 		}

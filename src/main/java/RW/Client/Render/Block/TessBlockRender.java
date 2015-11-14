@@ -7,13 +7,16 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class TessBlockRender implements ISimpleBlockRenderingHandler
 {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer)
 	{
-		Cube cub = new Cube(0, 0, 0, 64, 64, 64, 0, 0, 1 / 3,block.getIcon(0,metadata).getIconHeight());
+		Cube cub = new Cube(0, 0, 0, 64, 64, 64, 0, 0, 1 / 3, block.getIcon(0, metadata).getIconHeight());
 
 		cub.render((ResourceLocation) null);
 	}

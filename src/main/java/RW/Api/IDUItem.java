@@ -12,6 +12,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class IDUItem extends Item implements IItemContainsDU
 {
 	public int maxdu = 20000;
@@ -44,7 +47,8 @@ public class IDUItem extends Item implements IItemContainsDU
 				int ret = i.getTagCompound().getInteger("Energy") + du - this.maxdu;
 				i.getTagCompound().setInteger("Energy", this.maxdu);
 				return ret;
-			} else
+			}
+			else
 			{
 				i.getTagCompound().setInteger("Energy", i.getTagCompound().getInteger("Energy") + du);
 				return 0;
@@ -62,7 +66,8 @@ public class IDUItem extends Item implements IItemContainsDU
 				int ret = du - i.getTagCompound().getInteger("Energy");
 				i.getTagCompound().setInteger("Energy", 0);
 				return ret;
-			} else
+			}
+			else
 			{
 				int ret = 0;
 				i.getTagCompound().setInteger("Energy", i.getTagCompound().getInteger("Energy") - du);
@@ -85,7 +90,7 @@ public class IDUItem extends Item implements IItemContainsDU
 	@Override
 	public void setMax(int i)
 	{
-		this.maxdu=i;
+		this.maxdu = i;
 	}
 
 	@Override

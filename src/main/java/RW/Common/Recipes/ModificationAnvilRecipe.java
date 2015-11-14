@@ -6,6 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class ModificationAnvilRecipe implements IRecipe
 {
 	public ItemStack[] ings;
@@ -34,7 +37,8 @@ public class ModificationAnvilRecipe implements IRecipe
 						{
 							ret = false;
 						}
-					} else
+					}
+					else
 					{
 						if (this.ings[i] != null)
 						{
@@ -44,11 +48,13 @@ public class ModificationAnvilRecipe implements IRecipe
 
 				}
 
-			} else
+			}
+			else
 			{
 				ret = false;
 			}
-		} else
+		}
+		else
 		{
 			ret = false;
 		}
@@ -66,7 +72,8 @@ public class ModificationAnvilRecipe implements IRecipe
 				{
 					ret = false;
 				}
-			} else
+			}
+			else
 				ret = false;
 
 		}

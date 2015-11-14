@@ -2,12 +2,15 @@ package RW.Common.Book;
 
 import java.util.Hashtable;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class Chapter
 {
 	public Hashtable<Integer, Article> Articles = new Hashtable<Integer, Article>();
 	public String name = "";
 	public Object Icon;
-	
+
 	public Chapter(String name, Object icon)
 	{
 		this.name = name;

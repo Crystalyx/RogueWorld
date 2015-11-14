@@ -12,6 +12,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.client.renderers.block.BlockRenderer;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class SynchronizerRender implements ISimpleBlockRenderingHandler
 {
 
@@ -33,37 +36,37 @@ public class SynchronizerRender implements ISimpleBlockRenderingHandler
 		}
 		else
 			index = 1;
-		
+
 		renderer.setOverrideBlockTexture(block.getIcon(ForgeDirection.UP.ordinal(), index));
 		block.setBlockBounds(0F, 1.0F, 0F, 1F, 1F, 1F);
 		renderer.setRenderBoundsFromBlock(block);
 		renderer.renderStandardBlock(block, x, y, z);
 		renderer.clearOverrideBlockTexture();
-		
+
 		renderer.setOverrideBlockTexture(block.getIcon(ForgeDirection.EAST.ordinal(), w.getBlockMetadata(x, y, z)));
 		block.setBlockBounds(0F, 0.0F, 0F, 1F, 0F, 1F);
 		renderer.setRenderBoundsFromBlock(block);
 		renderer.renderStandardBlock(block, x, y, z);
-		renderer.clearOverrideBlockTexture();		
-		
+		renderer.clearOverrideBlockTexture();
+
 		renderer.setOverrideBlockTexture(block.getIcon(ForgeDirection.EAST.ordinal(), w.getBlockMetadata(x, y, z)));
 		block.setBlockBounds(1F, 0.0F, 0F, 1F, 1F, 1F);
 		renderer.setRenderBoundsFromBlock(block);
 		renderer.renderStandardBlock(block, x, y, z);
 		renderer.clearOverrideBlockTexture();
-		
+
 		renderer.setOverrideBlockTexture(block.getIcon(ForgeDirection.EAST.ordinal(), w.getBlockMetadata(x, y, z)));
 		block.setBlockBounds(0F, 0.0F, 1F, 1F, 1F, 1F);
 		renderer.setRenderBoundsFromBlock(block);
 		renderer.renderStandardBlock(block, x, y, z);
 		renderer.clearOverrideBlockTexture();
-		
+
 		renderer.setOverrideBlockTexture(block.getIcon(ForgeDirection.EAST.ordinal(), w.getBlockMetadata(x, y, z)));
 		block.setBlockBounds(0F, 0.0F, 0F, 0F, 1F, 1F);
 		renderer.setRenderBoundsFromBlock(block);
 		renderer.renderStandardBlock(block, x, y, z);
 		renderer.clearOverrideBlockTexture();
-		
+
 		renderer.setOverrideBlockTexture(block.getIcon(ForgeDirection.EAST.ordinal(), w.getBlockMetadata(x, y, z)));
 		block.setBlockBounds(0F, 0.0F, 0F, 1F, 1F, 0F);
 		renderer.setRenderBoundsFromBlock(block);

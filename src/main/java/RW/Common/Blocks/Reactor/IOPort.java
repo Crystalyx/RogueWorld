@@ -14,6 +14,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class IOPort extends ReactorElement
 {
 	public IOPort()
@@ -55,14 +58,14 @@ public class IOPort extends ReactorElement
 	public IIcon getIcon(int side, int meta)
 	{
 		int[] i = new int[] { 2, 5, 3, 4 };
-		int k=8, l=8;
+		int k = 8, l = 8;
 		if (meta < 4)
 		{
 			l = i[meta];
 		}
 		if (meta >= 4)
 		{
-			k = i[meta-4];
+			k = i[meta - 4];
 		}
 		return side == k ? this.in : (side == l ? this.out : this.side);
 	}

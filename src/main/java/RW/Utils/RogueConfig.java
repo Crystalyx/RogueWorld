@@ -3,6 +3,9 @@
  */
 package RW.Utils;
 
+/**
+ * @author Lord_Crystalyx
+ */
 import net.minecraftforge.common.config.Configuration;
 
 public class RogueConfig
@@ -23,7 +26,7 @@ public class RogueConfig
 		doLoadIntegr = RogueConfig.config.getBoolean("doLoadIntegration", "core", true, "Should Integration Be Loaded?");
 		doLoadRecipes = RogueConfig.config.getBoolean("doLoadRecipes", "core", true, "Should Recipes Be Loaded?");
 	}
-	
+
 	public boolean doLoadIntegr;
 	public boolean doLoadRecipes;
 }

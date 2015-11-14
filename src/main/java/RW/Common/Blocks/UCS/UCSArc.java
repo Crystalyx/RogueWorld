@@ -6,6 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class UCSArc extends Block implements IUCSPart
 {
 	public UCSArc()
@@ -19,8 +22,8 @@ public class UCSArc extends Block implements IUCSPart
 	@Override
 	public IUCSPart getPartRelatively(World w, int blockX, int blockY, int blockZ, int relativeX, int relativeY, int relativeZ)
 	{
-		Block b = w.getBlock(blockX+relativeX, blockY+relativeY, blockZ+relativeZ);
-		if(b instanceof IUCSPart)
+		Block b = w.getBlock(blockX + relativeX, blockY + relativeY, blockZ + relativeZ);
+		if (b instanceof IUCSPart)
 		{
 			return (IUCSPart) b;
 		}

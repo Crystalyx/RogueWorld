@@ -8,6 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class IStructurePart extends TileEntity
 {
 	private WorldPos core;
@@ -29,6 +32,6 @@ public class IStructurePart extends TileEntity
 
 	public void performAction(int x, int y, int z)
 	{
-		
+
 	}
 }

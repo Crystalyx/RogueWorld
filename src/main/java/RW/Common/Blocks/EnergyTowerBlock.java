@@ -16,9 +16,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class EnergyTowerBlock extends BlockContainer
-{	
-	private int tick=0;
+{
+	private int tick = 0;
 
 	public EnergyTowerBlock()
 	{
@@ -27,24 +30,24 @@ public class EnergyTowerBlock extends BlockContainer
 		this.setCreativeTab(MiscRegistry.modTab);
 		this.setBlockName("rw.etower");
 	}
-	
+
 	@Override
 	public void randomDisplayTick(World w, int x, int y, int z, Random rand)
 	{
-		
+
 	}
-	
+
 	public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float fx, float fy, float fz)
 	{
-		if(!p.isSneaking())
+		if (!p.isSneaking())
 		{
-			if(p.getCurrentEquippedItem() != null)
-			{ 
-				if(p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
+			if (p.getCurrentEquippedItem() != null)
+			{
+				if (p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
 				{
 					return false;
 				}
-			}		
+			}
 			p.openGui(RogueWorldCore.core, 3, w, x, y, z);
 		}
 		else
@@ -58,20 +61,20 @@ public class EnergyTowerBlock extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
 	{
-		
+
 		return new TileEntityEnergyTower();
 	}
-	
+
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
-	
+
 	public boolean isNormalCube()
 	{
 		return false;
 	}
-	
+
 	public int getRenderType()
 	{
 		return 0x8979;

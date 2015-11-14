@@ -6,6 +6,9 @@ package RW.Common.Misc;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class WorldPos
 {
 
@@ -25,6 +28,16 @@ public class WorldPos
 		this.x = p.posX;
 		this.y = p.posY;
 		this.z = p.posZ;
+	}
+
+	public static WorldPos getWorldPos(Entity p)
+	{
+		if (p != null)
+		{
+			return new WorldPos(p);
+		}
+		else
+			return null;
 	}
 
 	public WorldPos(TileEntity tile)

@@ -20,9 +20,11 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class SkillFireTrail extends Skill
 {
-
 	public SkillFireTrail(float Sdamage, float Saccuracy, int Srange)
 	{
 		super(2, Sdamage, Saccuracy, Srange, "FireTrail", 0, 1);
@@ -49,9 +51,9 @@ public class SkillFireTrail extends Skill
 				EntityFireSpark sprk = new EntityFireSpark(w, p, p.posX, p.posY, p.posZ);
 				sprk.posY += 1.5;
 				w.spawnEntityInWorld(sprk);
-
-				for (int i = 0; i < 100; i++)
-					spawnFire(w, w.rand, p);
+//
+//				for (int i = 0; i < 100; i++)
+//					spawnFire(w, w.rand, p);
 
 				// p.getCurrentEquippedItem().getTagCompound().setInteger("CoolDown",200);
 			}

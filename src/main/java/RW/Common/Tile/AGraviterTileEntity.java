@@ -12,6 +12,9 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class AGraviterTileEntity extends TileEntity
 {
 	public AGraviterTileEntity()
@@ -32,10 +35,10 @@ public class AGraviterTileEntity extends TileEntity
 	{
 		readFromNBT(pkt.func_148857_g());
 	}
-	
+
 	public void updateEntity()
-	{		
-		
+	{
+
 		double rx = this.worldObj.rand.nextDouble() * 10;
 		double ry = this.worldObj.rand.nextDouble() * 10;
 		double rz = this.worldObj.rand.nextDouble() * 10;
@@ -45,22 +48,24 @@ public class AGraviterTileEntity extends TileEntity
 			ry *= -1;
 		if (this.worldObj.rand.nextBoolean())
 			rz *= -1;
-		//RogueWorldCore.proxy.spawnParticle("energyFX", this.xCoord + 0.5F, this.yCoord - 0.5F, this.zCoord + 0.5F, this.xCoord + rx, this.yCoord + ry, this.zCoord + rz);
-		
-		
+		// RogueWorldCore.proxy.spawnParticle("energyFX", this.xCoord + 0.5F,
+		// this.yCoord - 0.5F, this.zCoord + 0.5F, this.xCoord + rx, this.yCoord
+		// + ry, this.zCoord + rz);
+
 		double radius = 40;
 		List<Entity> ents = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord - radius, this.yCoord - radius, this.zCoord - radius, this.xCoord + radius, this.yCoord + radius, this.zCoord + radius));
 		for (Entity entl : ents)
 		{
-			
+
 			if (!(entl instanceof EntityPlayer))
 			{
-				if(entl.motionY<=0)
+				if (entl.motionY <= 0)
 				{
-					entl.motionY=1;
+					entl.motionY = 1;
 				}
-				
-			} else
+
+			}
+			else
 			{
 				EntityPlayer p = (EntityPlayer) entl;
 				if (p.getCurrentArmor(3) != null)
@@ -68,22 +73,24 @@ public class AGraviterTileEntity extends TileEntity
 					if (MiscUtils.playerData.get(p.getCommandSenderName()).playerIsSeeker)
 					{
 
-					} else
+					}
+					else
 					{
-						if(entl.motionY<=0)
+						if (entl.motionY <= 0)
 						{
-							entl.motionY=1;
+							entl.motionY = 1;
 						}
 					}
-				} else
+				}
+				else
 				{
-					if(entl.motionY<=0)
+					if (entl.motionY <= 0)
 					{
-						entl.motionY=1;
+						entl.motionY = 1;
 					}
 				}
 			}
-			
+
 			// entl.setVelocity(this.xCoord-entl.posX+0.5,
 			// this.yCoord-entl.posY+0.5, this.zCoord-entl.posZ+0.5);
 		}

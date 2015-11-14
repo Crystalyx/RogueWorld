@@ -1,6 +1,3 @@
-/**
- * This Class Created By Lord_Crystalyx.
- */
 package RW.Client.Gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -14,6 +11,9 @@ import RW.Common.Tile.TileEntityExtractor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * @author Lord_Crystalyx
+ */
 @SideOnly(Side.CLIENT)
 public class GuiExtractor extends GuiContainer
 {

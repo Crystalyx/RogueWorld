@@ -8,6 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class GraviterBlock extends BlockContainer
 {
 
@@ -20,15 +23,15 @@ public class GraviterBlock extends BlockContainer
 		this.setResistance(10.0F);
 		this.setHardness(10.0F);
 	}
-	
+
 	/**
-     * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
-     * cleared to be reused)
-     */
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World w, int x, int y, int z)
-    {
-        return AxisAlignedBB.getBoundingBox(x, y, z, x+1, y+1, z+1);
-    }
+	 * Returns a bounding box from the pool of bounding boxes (this means this
+	 * box can change after the pool has been cleared to be reused)
+	 */
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World w, int x, int y, int z)
+	{
+		return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1);
+	}
 
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
@@ -40,7 +43,7 @@ public class GraviterBlock extends BlockContainer
 	{
 		return 0x8981;
 	}
-	
+
 	/**
 	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
 	 * or not to render the shared face of two adjacent blocks and also whether
@@ -50,8 +53,7 @@ public class GraviterBlock extends BlockContainer
 	{
 		return false;
 	}
-	
-	
+
 	public boolean isNormalCube()
 	{
 		return false;

@@ -12,35 +12,39 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntitySynchronizer extends TileEntity
 {
-	
 	public TileEntitySynchronizer()
 	{
 		super();
 	}
-	
+
 	@Override
 	public void updateEntity()
 	{
-		
+
 	}
+
 	@Override
 	public void writeToNBT(NBTTagCompound tag)
 	{
 		super.writeToNBT(tag);
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-	   public AxisAlignedBB getRenderBoundingBox() {
-	      return AxisAlignedBB.getBoundingBox((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)(this.xCoord + 1), (double)(this.yCoord + 5), (double)(this.zCoord + 1));
-	   }
+	public AxisAlignedBB getRenderBoundingBox()
+	{
+		return AxisAlignedBB.getBoundingBox((double) this.xCoord, (double) this.yCoord, (double) this.zCoord, (double) (this.xCoord + 1), (double) (this.yCoord + 5), (double) (this.zCoord + 1));
+	}
 
 	@Override
 	public Packet getDescriptionPacket()

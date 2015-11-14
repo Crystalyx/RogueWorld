@@ -9,6 +9,9 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.IChatComponent;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class CommandSetDamage extends CommandBase
 {
 
@@ -23,35 +26,37 @@ public class CommandSetDamage extends CommandBase
 	{
 		return "/setSwordDamage <player> <damage>";
 	}
-	
+
 	public int getRequiredPermissionLevel()
-    {
-        return 3;
-    }
+	{
+		return 3;
+	}
 
 	@Override
 	public void processCommand(ICommandSender sender, String[] arg)
 	{
-	        EntityPlayerMP p = arg.length == 0 ? getCommandSenderAsPlayer(sender) : getPlayer(sender, arg[0]);
-	    	int damage = parseIntWithMin(sender, arg[1], 1);
-			if(p.getCurrentEquippedItem() != null)
+		EntityPlayerMP p = arg.length == 0 ? getCommandSenderAsPlayer(sender) : getPlayer(sender, arg[0]);
+		int damage = parseIntWithMin(sender, arg[1], 1);
+		if (p.getCurrentEquippedItem() != null)
+		{
+			if (p.getCurrentEquippedItem().getItem() == ItemRegistry.DSword)
 			{
-				if(p.getCurrentEquippedItem().getItem() == ItemRegistry.DSword)
+				if (p.getCurrentEquippedItem().getTagCompound() != null)
 				{
-					if(p.getCurrentEquippedItem().getTagCompound() != null)
-					{
-						p.getCurrentEquippedItem().getTagCompound().setInteger("Damage", damage);
-					}
+					p.getCurrentEquippedItem().getTagCompound().setInteger("Damage", damage);
 				}
 			}
-			
+		}
+
 	}
-	 /**
-     * Return whether the specified command parameter index is a username parameter.
-     */
-    public boolean isUsernameIndex(int par1)
-    {
-        return par1 == 0;
-    }
+
+	/**
+	 * Return whether the specified command parameter index is a username
+	 * parameter.
+	 */
+	public boolean isUsernameIndex(int par1)
+	{
+		return par1 == 0;
+	}
 
 }

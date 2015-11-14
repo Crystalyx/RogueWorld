@@ -9,15 +9,17 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityEnergyTower extends EnergeticTileEntity
 {
 
 	public TileEntityEnergyTower()
 	{
-		super(1, 5000,"Energy Tower");
-		this.uname="tower";
+		super(1, 5000, "Energy Tower");
+		this.uname = "tower";
 	}
-	
 
 	@Override
 	public Packet getDescriptionPacket()

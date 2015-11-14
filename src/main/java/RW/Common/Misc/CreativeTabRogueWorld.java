@@ -7,16 +7,19 @@ import RW.Common.Registry.ItemRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class CreativeTabRogueWorld extends CreativeTabs 
+/**
+ * @author Lord_Crystalyx
+ */
+public class CreativeTabRogueWorld extends CreativeTabs
 {
 
-	public CreativeTabRogueWorld(String p_i1853_2_) 
+	public CreativeTabRogueWorld(String p_i1853_2_)
 	{
 		super(p_i1853_2_);
 	}
 
 	@Override
-	public Item getTabIconItem() 
+	public Item getTabIconItem()
 	{
 		return ItemRegistry.DSword;
 	}

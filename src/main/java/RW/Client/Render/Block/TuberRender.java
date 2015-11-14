@@ -10,6 +10,9 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import thaumcraft.client.renderers.block.BlockRenderer;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class TuberRender implements ISimpleBlockRenderingHandler
 {
 
@@ -56,42 +59,41 @@ public class TuberRender implements ISimpleBlockRenderingHandler
 			renderer.renderStandardBlock(BlockRegistry.tuber, x, y, z);
 		}
 
-		if (world.getBlock(x, y - 1, z) == BlockRegistry.tuber|| world.getBlock(x, y - 1, z)instanceof BaseBlock)
+		if (world.getBlock(x, y - 1, z) == BlockRegistry.tuber || world.getBlock(x, y - 1, z) instanceof BaseBlock)
 		{
 			block.setBlockBounds(Tx, 0.0F, Tx, Ty, Tx, Ty);
 			renderer.setRenderBoundsFromBlock(block);
 			renderer.renderStandardBlock(BlockRegistry.tuber, x, y, z);
 		}
-		
 
-		if (world.getBlock(x+1, y, z) == BlockRegistry.tuber|| world.getBlock(x+1, y, z) instanceof BaseBlock)
+		if (world.getBlock(x + 1, y, z) == BlockRegistry.tuber || world.getBlock(x + 1, y, z) instanceof BaseBlock)
 		{
 			block.setBlockBounds(Ty, Tx, Tx, 1.0F, Ty, Ty);
 			renderer.setRenderBoundsFromBlock(block);
 			renderer.renderStandardBlock(BlockRegistry.tuber, x, y, z);
 		}
 
-		if (world.getBlock(x-1, y, z) == BlockRegistry.tuber|| world.getBlock(x-1, y, z) instanceof BaseBlock)
+		if (world.getBlock(x - 1, y, z) == BlockRegistry.tuber || world.getBlock(x - 1, y, z) instanceof BaseBlock)
 		{
 			block.setBlockBounds(0.0F, Tx, Tx, Tx, Ty, Ty);
 			renderer.setRenderBoundsFromBlock(block);
 			renderer.renderStandardBlock(BlockRegistry.tuber, x, y, z);
-		}		
+		}
 
-		if (world.getBlock(x, y, z+1) == BlockRegistry.tuber|| world.getBlock(x, y, z+1) instanceof BaseBlock)
+		if (world.getBlock(x, y, z + 1) == BlockRegistry.tuber || world.getBlock(x, y, z + 1) instanceof BaseBlock)
 		{
 			block.setBlockBounds(Tx, Tx, Ty, Ty, Ty, 1.0F);
 			renderer.setRenderBoundsFromBlock(block);
 			renderer.renderStandardBlock(BlockRegistry.tuber, x, y, z);
 		}
 
-		if (world.getBlock(x, y, z-1) == BlockRegistry.tuber|| world.getBlock(x, y, z-1) instanceof BaseBlock)
+		if (world.getBlock(x, y, z - 1) == BlockRegistry.tuber || world.getBlock(x, y, z - 1) instanceof BaseBlock)
 		{
 			block.setBlockBounds(Tx, Tx, 0.0F, Ty, Ty, Tx);
 			renderer.setRenderBoundsFromBlock(block);
 			renderer.renderStandardBlock(BlockRegistry.tuber, x, y, z);
 		}
-		
+
 		renderer.field_152631_f = true;
 
 		renderer.clearOverrideBlockTexture();

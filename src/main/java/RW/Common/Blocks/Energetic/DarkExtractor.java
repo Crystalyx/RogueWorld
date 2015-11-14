@@ -17,10 +17,13 @@ import RW.Common.Registry.MiscRegistry;
 import RW.Common.Tile.TileEntityExtractor;
 import RW.Core.RogueWorldCore;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class DarkExtractor extends BlockContainer
 {
 
-	public DarkExtractor(Material mat) 
+	public DarkExtractor(Material mat)
 	{
 		super(mat);
 		this.setCreativeTab(MiscRegistry.modTab);
@@ -28,11 +31,11 @@ public class DarkExtractor extends BlockContainer
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) 
+	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
 	{
 		return new TileEntityExtractor(0, 200000, "Dark Extractor");
 	}
-	
+
 	public IIcon top;
 	public IIcon side;
 	public IIcon bottom;
@@ -40,14 +43,14 @@ public class DarkExtractor extends BlockContainer
 	@Override
 	public IIcon getIcon(int bside, int meta)
 	{
-		if(bside == ForgeDirection.DOWN.ordinal())
-			return bottom;	
+		if (bside == ForgeDirection.DOWN.ordinal())
+			return bottom;
+		else if (bside == ForgeDirection.UP.ordinal())
+			return top;
 		else
-			if(bside == ForgeDirection.UP.ordinal())
-				return top;
-			else
-				return side;
+			return side;
 	}
+
 	@Override
 	public void registerBlockIcons(IIconRegister ir)
 	{
@@ -55,18 +58,18 @@ public class DarkExtractor extends BlockContainer
 		side = ir.registerIcon("rogueWorld:extractor/extractor_side");
 		bottom = ir.registerIcon("rogueWorld:extractor/extractor_bottom");
 	}
-	
+
 	public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int meta, float px, float py, float pz)
 	{
-		if(!p.isSneaking())
+		if (!p.isSneaking())
 		{
-			if(p.getCurrentEquippedItem() != null)
-			{ 
-				if(p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
+			if (p.getCurrentEquippedItem() != null)
+			{
+				if (p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
 				{
 					return false;
 				}
-			}		
+			}
 			p.openGui(RogueWorldCore.core, 0, w, x, y, z);
 		}
 		else
@@ -76,11 +79,11 @@ public class DarkExtractor extends BlockContainer
 		}
 		return true;
 	}
-	
+
 	@Override
-    public int getRenderBlockPass()
-    {
-        return 0;
-    }
+	public int getRenderBlockPass()
+	{
+		return 0;
+	}
 
 }

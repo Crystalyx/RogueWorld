@@ -15,9 +15,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class Affixer extends BlockContainer
 {
-
 	private IIcon bottom;
 	private IIcon top;
 	private IIcon side;
@@ -78,7 +80,8 @@ public class Affixer extends BlockContainer
 				}
 			}
 			p.openGui(RogueWorldCore.core, 5, w, x, y, z);
-		} else
+		}
+		else
 		{
 			EnergeticTileEntity From = (EnergeticTileEntity) w.getTileEntity(x, y, z);
 			From.unBound();

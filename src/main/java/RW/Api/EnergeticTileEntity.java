@@ -1,6 +1,3 @@
-/**
- * This Class Created By Lord_Crystalyx.
- */
 package RW.Api;
 
 import RW.Client.FX.BindingBeam;
@@ -21,7 +18,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-
+/**
+ * @author Lord_Crystalyx
+ */
 public class EnergeticTileEntity extends TileEntity implements IInventory
 {
 	public WorldPos linkedTo;

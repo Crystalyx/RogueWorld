@@ -13,6 +13,9 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class GuiBook extends GuiScreen
 {
 	public ResourceLocation texture = new ResourceLocation("rogueWorld:textures/misc/gui/gui_book.png");
@@ -36,14 +39,14 @@ public class GuiBook extends GuiScreen
 		FontRenderer fontrenderer = this.fontRendererObj;
 		int i1 = this.width / 2 - 150;
 		int l1 = b1 + 1;
-		
+
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
-		
+
 		ChapterPage pg = new ChapterPage(PageRegistry.Chapters);
-		
-		pg.drawPage(k, l,this.fontRendererObj);
-		
+
+		pg.drawPage(k, l, this.fontRendererObj);
+
 		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
 	}
 
@@ -69,11 +72,11 @@ public class GuiBook extends GuiScreen
 		Tessellator tess = Tessellator.instance;
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
-		
+
 		GL11.glPushMatrix();
 		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(k, l, 0, 0, 512 / 2, 512 / 2);
-		GL11.glPopMatrix();		
-		
+		GL11.glPopMatrix();
+
 	}
 }

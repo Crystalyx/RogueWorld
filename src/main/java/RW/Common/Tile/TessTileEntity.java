@@ -1,10 +1,14 @@
 package RW.Common.Tile;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TessTileEntity extends TileEntity
 {
 	public TessTileEntity()

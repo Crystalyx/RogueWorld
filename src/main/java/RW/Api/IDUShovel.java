@@ -14,11 +14,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class IDUShovel extends ItemSpade implements IItemContainsDU
 {
 	public int maxdu = 20000;
 
-	public IDUShovel(ToolMaterial mat,int max)
+	public IDUShovel(ToolMaterial mat, int max)
 	{
 		super(mat);
 		this.maxdu = max;
@@ -28,6 +31,7 @@ public class IDUShovel extends ItemSpade implements IItemContainsDU
 	{
 		super(mat);
 	}
+
 	@Override
 	public int addDU(ItemStack i, int du)
 	{
@@ -39,7 +43,8 @@ public class IDUShovel extends ItemSpade implements IItemContainsDU
 				this.setEnergy(i, this.maxdu);
 				Logger.info("DUAdded");
 				return ret;
-			} else
+			}
+			else
 			{
 				this.setEnergy(i, this.getEnergy(i) + du);
 				Logger.info("DUAdded");
@@ -57,10 +62,11 @@ public class IDUShovel extends ItemSpade implements IItemContainsDU
 			if (this.getEnergy(i) < du)
 			{
 				int ret = du - this.getEnergy(i);
-				this.setEnergy(i,0);
+				this.setEnergy(i, 0);
 				Logger.info("DUConsumed");
 				return ret;
-			} else
+			}
+			else
 			{
 				int ret = 0;
 				this.setEnergy(i, this.getEnergy(i) - du);
@@ -70,17 +76,17 @@ public class IDUShovel extends ItemSpade implements IItemContainsDU
 		}
 		return du;
 	}
-	
-	public void setEnergy(ItemStack i,int e)
+
+	public void setEnergy(ItemStack i, int e)
 	{
-		i.getTagCompound().setInteger("Energy",e);
+		i.getTagCompound().setInteger("Energy", e);
 	}
-	
+
 	public int getEnergy(ItemStack i)
 	{
 		return i.getTagCompound().getInteger("Energy");
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack i, EntityPlayer p, List l, boolean bool)
@@ -94,9 +100,9 @@ public class IDUShovel extends ItemSpade implements IItemContainsDU
 	@Override
 	public void setMax(int i)
 	{
-		this.maxdu=i;
+		this.maxdu = i;
 	}
-	
+
 	public void onUpdate(ItemStack i, World w, Entity e, int p_77663_4_, boolean inhand)
 	{
 		if (i.getTagCompound() == null)

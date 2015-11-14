@@ -9,6 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class IBookPage extends GuiScreen
 {
 
@@ -39,18 +42,18 @@ public class IBookPage extends GuiScreen
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glPopMatrix();
 	}
-	
-	protected void drawItemStack(ItemStack p_146982_1_, int p_146982_2_, int p_146982_3_, String p_146982_4_,FontRenderer gui)
-    {
-        GL11.glTranslatef(0.0F, 0.0F, 32.0F);
-        this.zLevel = 200.0F;
-        itemRender.zLevel = 200.0F;
-        FontRenderer font = gui;
-        itemRender.renderItemAndEffectIntoGUI(font, Minecraft.getMinecraft().getTextureManager(), p_146982_1_, p_146982_2_, p_146982_3_);
-        itemRender.renderItemOverlayIntoGUI(font, this.mc.getTextureManager(), p_146982_1_, p_146982_2_, p_146982_3_, p_146982_4_);
-        this.zLevel = 0.0F;
-        itemRender.zLevel = 0.0F;
-    }
+
+	protected void drawItemStack(ItemStack p_146982_1_, int p_146982_2_, int p_146982_3_, String p_146982_4_, FontRenderer gui)
+	{
+		GL11.glTranslatef(0.0F, 0.0F, 32.0F);
+		this.zLevel = 200.0F;
+		itemRender.zLevel = 200.0F;
+		FontRenderer font = gui;
+		itemRender.renderItemAndEffectIntoGUI(font, Minecraft.getMinecraft().getTextureManager(), p_146982_1_, p_146982_2_, p_146982_3_);
+		itemRender.renderItemOverlayIntoGUI(font, this.mc.getTextureManager(), p_146982_1_, p_146982_2_, p_146982_3_, p_146982_4_);
+		this.zLevel = 0.0F;
+		itemRender.zLevel = 0.0F;
+	}
 
 	public void drawPageTextureRight(int width, int height)
 	{

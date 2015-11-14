@@ -19,14 +19,17 @@ import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class ResearchRegistry
 {
 	public static ResearchItem atrillium = getResearch("RW.Atrillium", "RW.Category", -2, -2, new AspectList(), 2, new ItemStack(ItemRegistry.AtrilliumI), crtPage("RW.Atrillium.Descr"));
 	public static ResearchItem altersteel = getResearch("RW.Altersteel", "RW.Category", 2, -2, new AspectList(), 2, new ItemStack(ItemRegistry.AltersteelI), crtPage("RW.Altersteel.Descr"));
 	public static ResearchItem crystald = getResearch("RW.Crystald", "RW.Category", 0, 0, new AspectList(), 2, new ItemStack(ItemRegistry.DCryst), crtPage("RW.Crystald.Descr"));
-	public static ResearchItem ARod = getResearch("ROD_Altersteel", "RW.Category", 1, -4, new AspectList().add(Aspect.TOOL,1).add(Aspect.AURA,1), 2, new ItemStack(ItemRegistry.ARod), crtPage("ROD_Altersteel.Descr"));
-	public static ResearchItem ACap = getResearch("CAP_Atrillium", "RW.Category", -1, -4, new AspectList().add(Aspect.TOOL,1).add(Aspect.AURA,1), 2, new ItemStack(ItemRegistry.ACap), crtPage("CAP_Atrillium.Descr"));
-	
+	public static ResearchItem ARod = getResearch("ROD_Altersteel", "RW.Category", 1, -4, new AspectList().add(Aspect.TOOL, 1).add(Aspect.AURA, 1), 2, new ItemStack(ItemRegistry.ARod), crtPage("ROD_Altersteel.Descr"));
+	public static ResearchItem ACap = getResearch("CAP_Atrillium", "RW.Category", -1, -4, new AspectList().add(Aspect.TOOL, 1).add(Aspect.AURA, 1), 2, new ItemStack(ItemRegistry.ACap), crtPage("CAP_Atrillium.Descr"));
+
 	public static void register()
 	{
 		tuneResearches();
@@ -37,7 +40,7 @@ public class ResearchRegistry
 		ResearchCategories.addResearch(ARod);
 		ResearchCategories.addResearch(ACap);
 	}
-	
+
 	public static void tuneResearches()
 	{
 		atrillium.setRound();
@@ -47,46 +50,47 @@ public class ResearchRegistry
 		crystald.setRound();
 		crystald.setAutoUnlock();
 	}
-	
+
 	public static ResearchPage crtPage(Object obj)
 	{
-		if(obj instanceof String)
-		return new ResearchPage((String)obj);
-		
-		if(obj instanceof IRecipe)
-			return new ResearchPage((IRecipe)obj);
-		
-		if(obj instanceof IRecipe[])
-			return new ResearchPage((IRecipe[])obj);	
-		
-		if(obj instanceof IArcaneRecipe[])
-			return new ResearchPage((IArcaneRecipe[])obj);
+		if (obj instanceof String)
+			return new ResearchPage((String) obj);
 
-		if(obj instanceof InfusionRecipe[])
-			return new ResearchPage((InfusionRecipe[])obj);
-		
-		if(obj instanceof List)
-			return new ResearchPage((List)obj);
-		
-		if(obj instanceof IArcaneRecipe)
-			return new ResearchPage((IArcaneRecipe)obj);
-		
-		if(obj instanceof CrucibleRecipe)
-			return new ResearchPage((CrucibleRecipe)obj);
-		
-		if(obj instanceof ItemStack)
-			return new ResearchPage((ItemStack)obj);
-		
-		if(obj instanceof InfusionRecipe)
-			return new ResearchPage((InfusionRecipe)obj);
-		
-		if(obj instanceof InfusionEnchantmentRecipe)
-			return new ResearchPage((InfusionEnchantmentRecipe)obj);
-		return null;	
+		if (obj instanceof IRecipe)
+			return new ResearchPage((IRecipe) obj);
+
+		if (obj instanceof IRecipe[])
+			return new ResearchPage((IRecipe[]) obj);
+
+		if (obj instanceof IArcaneRecipe[])
+			return new ResearchPage((IArcaneRecipe[]) obj);
+
+		if (obj instanceof InfusionRecipe[])
+			return new ResearchPage((InfusionRecipe[]) obj);
+
+		if (obj instanceof List)
+			return new ResearchPage((List) obj);
+
+		if (obj instanceof IArcaneRecipe)
+			return new ResearchPage((IArcaneRecipe) obj);
+
+		if (obj instanceof CrucibleRecipe)
+			return new ResearchPage((CrucibleRecipe) obj);
+
+		if (obj instanceof ItemStack)
+			return new ResearchPage((ItemStack) obj);
+
+		if (obj instanceof InfusionRecipe)
+			return new ResearchPage((InfusionRecipe) obj);
+
+		if (obj instanceof InfusionEnchantmentRecipe)
+			return new ResearchPage((InfusionEnchantmentRecipe) obj);
+		return null;
 	}
-	
+
 	public List<ResearchItem> researches;
 	public static int id;
+
 	/**
 	 * 
 	 * @param tag
@@ -97,20 +101,22 @@ public class ResearchRegistry
 	 * @param complex
 	 * @param icon
 	 * @param param
-	 * @param pages - Boolean[9]
+	 * @param pages
+	 *            - Boolean[9]
 	 */
-	public static ResearchItem getResearch(String tag,String category,int x,int y,AspectList list,int complex,ResourceLocation icon,ResearchPage ... pages)
+	public static ResearchItem getResearch(String tag, String category, int x, int y, AspectList list, int complex, ResourceLocation icon, ResearchPage... pages)
 	{
-		ResearchItem research = new ResearchItem(tag,category,list,x,y,complex,icon);
+		ResearchItem research = new ResearchItem(tag, category, list, x, y, complex, icon);
 		research.setPages(pages);
 		return research;
-		
+
 	}
-	public static ResearchItem getResearch(String tag,String category,int x,int y,AspectList list,int complex,ItemStack icon,ResearchPage ... pages)
+
+	public static ResearchItem getResearch(String tag, String category, int x, int y, AspectList list, int complex, ItemStack icon, ResearchPage... pages)
 	{
-		ResearchItem research = new ResearchItem(tag,category,list,x,y,complex,icon);
+		ResearchItem research = new ResearchItem(tag, category, list, x, y, complex, icon);
 		research.setPages(pages);
-		
+
 		return research;
 	}
 }

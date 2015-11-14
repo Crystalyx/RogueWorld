@@ -12,6 +12,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class EnergyTowerRender implements ISimpleBlockRenderingHandler
 {
 
@@ -29,7 +32,7 @@ public class EnergyTowerRender implements ISimpleBlockRenderingHandler
 		GL11.glPopMatrix();
 		RenderHelper.enableStandardItemLighting();
 	}
-	
+
 	public static final DarkTower model = new DarkTower();
 	public static final ResourceLocation textures = new ResourceLocation("rogueWorld:textures/misc/model/DarkTower.png");
 

@@ -6,6 +6,9 @@ package RW.Common.Items;
 import RW.Common.Registry.MiscRegistry;
 import net.minecraft.item.Item;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class AltersteelIngot extends Item
 {
 	public AltersteelIngot()

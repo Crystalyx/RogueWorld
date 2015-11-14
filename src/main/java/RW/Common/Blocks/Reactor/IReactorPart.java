@@ -8,6 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public interface IReactorPart
 {
 

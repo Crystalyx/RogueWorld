@@ -17,6 +17,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityDarkDeconstructor extends EnergeticTileEntity implements ISidedInventory
 {
 	public ItemStack[] inventory = new ItemStack[5];
@@ -25,7 +28,7 @@ public class TileEntityDarkDeconstructor extends EnergeticTileEntity implements 
 	{
 		super(2, 50000, "Dark Deconstructor");
 		this.uname = "deconstructor";
-		this.doSaveInventory=false;
+		this.doSaveInventory = false;
 	}
 
 	@Override
@@ -151,13 +154,15 @@ public class TileEntityDarkDeconstructor extends EnergeticTileEntity implements 
 				ItemStack ret = this.inventory[slot];
 				this.inventory[slot] = null;
 				return ret;
-			} else
+			}
+			else
 			{
 				ItemStack ret = new ItemStack(this.inventory[slot].getItem(), c, this.inventory[slot].getItemDamage());
 				this.inventory[slot].stackSize -= c;
 				return ret;
 			}
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -171,7 +176,8 @@ public class TileEntityDarkDeconstructor extends EnergeticTileEntity implements 
 			ItemStack itemstack = this.inventory[slot];
 			this.inventory[slot] = null;
 			return itemstack;
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -227,8 +233,7 @@ public class TileEntityDarkDeconstructor extends EnergeticTileEntity implements 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int p_94128_1_)
 	{
-		return new int[]
-		{ 0 };
+		return new int[] { 0 };
 	}
 
 	@Override

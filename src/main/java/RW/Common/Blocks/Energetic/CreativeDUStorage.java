@@ -15,6 +15,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class CreativeDUStorage extends BlockContainer
 {
 
@@ -30,8 +33,8 @@ public class CreativeDUStorage extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
 	{
-		EnergeticTileEntity tile = new EnergeticTileEntity(2, 10000,"Creative Storage");
-		tile.isCreative=true;
+		EnergeticTileEntity tile = new EnergeticTileEntity(2, 10000, "Creative Storage");
+		tile.isCreative = true;
 		return tile;
 	}
 

@@ -16,6 +16,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityDUStorage extends EnergeticTileEntity
 {
 	public WorldPos[] linkedTo = new WorldPos[8];
@@ -40,12 +43,12 @@ public class TileEntityDUStorage extends EnergeticTileEntity
 				{
 					if (this.inventory[5].getTagCompound().getInteger("Energy") >= this.maxPacketSize)
 					{
-						if (this.energy <=this.maxEnergy - this.maxPacketSize)
+						if (this.energy <= this.maxEnergy - this.maxPacketSize)
 						{
 							int exc = ((IItemContainsDU) this.inventory[5].getItem()).consumeDU(this.inventory[5], this.maxPacketSize);
 							int def = this.addEnergy(this.maxPacketSize - exc);
-							if(def>0)
-							((IItemContainsDU) this.inventory[5].getItem()).addDU(this.inventory[5], def);
+							if (def > 0)
+								((IItemContainsDU) this.inventory[5].getItem()).addDU(this.inventory[5], def);
 						}
 					}
 				}
@@ -64,8 +67,8 @@ public class TileEntityDUStorage extends EnergeticTileEntity
 						{
 							int exc = ((IItemContainsDU) this.inventory[4].getItem()).addDU(this.inventory[4], this.maxPacketSize);
 							int def = this.consumeEnergy(this.maxPacketSize - exc);
-							if(def>0)
-							((IItemContainsDU) this.inventory[4].getItem()).consumeDU(this.inventory[4], def);
+							if (def > 0)
+								((IItemContainsDU) this.inventory[4].getItem()).consumeDU(this.inventory[4], def);
 						}
 					}
 				}
@@ -82,13 +85,15 @@ public class TileEntityDUStorage extends EnergeticTileEntity
 					{
 						this.unBound(i);
 						Logger.info("UnBound - Null TileEntity");
-					} else
+					}
+					else
 					{
 						if (!(this.getWorldObj().getTileEntity((int) this.linkedTo[i].getX(), (int) this.linkedTo[i].getY(), (int) this.linkedTo[i].getZ()) instanceof EnergeticTileEntity))
 						{
 							this.unBound(i);
 							Logger.info("UnBound - Non Energetic TileEntity");
-						} else
+						}
+						else
 						{
 							if (MiscUtils.getDistance(new WorldPos(this), linkedTo[i]) > this.getRange())
 							{
@@ -206,13 +211,15 @@ public class TileEntityDUStorage extends EnergeticTileEntity
 				ItemStack ret = this.inventory[slot];
 				this.inventory[slot] = null;
 				return ret;
-			} else
+			}
+			else
 			{
 				ItemStack ret = new ItemStack(this.inventory[slot].getItem(), count, this.inventory[slot].getItemDamage());
 				this.inventory[slot].stackSize -= count;
 				return ret;
 			}
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -226,7 +233,8 @@ public class TileEntityDUStorage extends EnergeticTileEntity
 			ItemStack itemstack = this.inventory[slot];
 			this.inventory[slot] = null;
 			return itemstack;
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -296,7 +304,8 @@ public class TileEntityDUStorage extends EnergeticTileEntity
 				if (i.getItem() == ItemRegistry.metai && i.getItemDamage() < 2)
 				{
 					return true;
-				} else
+				}
+				else
 					return false;
 			}
 		}

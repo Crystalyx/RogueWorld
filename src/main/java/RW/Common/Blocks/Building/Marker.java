@@ -4,9 +4,11 @@ import RW.Common.Registry.MiscRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class Marker extends Block
 {
-
 	public Marker()
 	{
 		super(Material.cloth);
@@ -25,8 +27,7 @@ public class Marker extends Block
 	{
 		return false;
 	}
-	
-	
+
 	public boolean isNormalCube()
 	{
 		return false;

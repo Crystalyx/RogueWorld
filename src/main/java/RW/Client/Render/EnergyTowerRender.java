@@ -28,6 +28,9 @@ import net.minecraft.init.Items;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class EnergyTowerRender extends TileEntitySpecialRenderer
 {
 	@Override

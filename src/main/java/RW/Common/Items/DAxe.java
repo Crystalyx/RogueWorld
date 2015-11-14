@@ -16,6 +16,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class DAxe extends IDUAxe
 {
 
@@ -26,25 +29,26 @@ public class DAxe extends IDUAxe
 		this.setCreativeTab(MiscRegistry.modTab);
 		this.setUnlocalizedName("rw.darkaxe");
 	}
+
 	public NBTTagCompound tag = new NBTTagCompound();
 
 	public ItemStack onItemRightClick(ItemStack i, World w, EntityPlayer p)
 	{
-		if(p.isSneaking())
+		if (p.isSneaking())
 		{
-			if(!i.hasTagCompound())
-			{	
+			if (!i.hasTagCompound())
+			{
 				tag.setFloat("Exp", 0);
 				tag.setInteger("Level", 1);
 				i.setTagCompound(tag);
 			}
 		}
-		return i;		
+		return i;
 	}
-	
+
 	public void onUpdate(ItemStack i, World w, Entity e, int p_77663_4_, boolean inhand)
 	{
-		if(i.getTagCompound() == null)
+		if (i.getTagCompound() == null)
 		{
 			tag.setFloat("Expirience", 0);
 			tag.setInteger("Level", 1);
@@ -52,10 +56,10 @@ public class DAxe extends IDUAxe
 		}
 		else
 		{
-			this.setHarvestLevel("axe", i.getTagCompound().getInteger("Level")/3+1);
+			this.setHarvestLevel("axe", i.getTagCompound().getInteger("Level") / 3 + 1);
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack i, EntityPlayer p, List l, boolean bool)
@@ -68,7 +72,7 @@ public class DAxe extends IDUAxe
 			l.add(EnumChatFormatting.BLUE + "Level: " + lev);
 			l.add("");
 		}
-		
+
 		if (i.getTagCompound() != null)
 		{
 			l.add(EnumChatFormatting.GRAY + "" + i.getTagCompound().getInteger("Energy") + "/20000 DU");

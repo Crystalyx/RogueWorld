@@ -48,6 +48,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class BlockRegistry
 {
 	public static String id = "rw.";
@@ -127,7 +130,7 @@ public class BlockRegistry
 		GameRegistry.registerBlock(ETower, ETower.getUnlocalizedName());
 		GameRegistry.registerBlock(deconstr, deconstr.getUnlocalizedName());
 		GameRegistry.registerBlock(ioport, ioport.getUnlocalizedName());
-		GameRegistry.registerBlock(sky,ItemSkyBlock.class, sky.getUnlocalizedName());
+		GameRegistry.registerBlock(sky, ItemSkyBlock.class, sky.getUnlocalizedName());
 		GameRegistry.registerBlock(ucscore, ucscore.getUnlocalizedName());
 		GameRegistry.registerBlock(ucsarc, ucsarc.getUnlocalizedName());
 		GameRegistry.registerBlock(ncall, ncall.getUnlocalizedName());
@@ -139,8 +142,8 @@ public class BlockRegistry
 		registerBlockSimply(Material.iron, "rtcasing", "reactor/casing_tough", 1.0F, 10.0F, false, simpleBlocks);
 		registerBlockSimply(Material.glass, "mframe", "frame", 1.0F, 10.0F, true, simpleBlocks);
 
-		registerOreSimply("oredark", "dark_ore", 0.5F, 0.5F, ores, new ItemStack(ItemRegistry.DCryst, 3, 0), true, 6,false);
-		registerOreSimply("oreatrillium", "ore_atrillium", 0.5F, 0.5F, ores,new ItemStack(ItemRegistry.AtrilliumI),false,1,true);
+		registerOreSimply("oredark", "dark_ore", 0.5F, 0.5F, ores, new ItemStack(ItemRegistry.DCryst, 3, 0), true, 6, false);
+		registerOreSimply("oreatrillium", "ore_atrillium", 0.5F, 0.5F, ores, new ItemStack(ItemRegistry.AtrilliumI), false, 1, true);
 
 		// metab = new MetaBlock(textures,names);
 		// GameRegistry.registerItem(metab, metab.getUnlocalizedName());

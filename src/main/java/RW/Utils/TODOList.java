@@ -3,11 +3,13 @@
  */
 package RW.Utils;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TODOList
 {
 	/**
-	 * TODO Recipes
-	 * TODO Reactor
+	 * TODO Recipes TODO Reactor
 	 * 
 	 * TODO Universe Control System (UCS)
 	 **/

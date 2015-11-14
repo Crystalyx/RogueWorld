@@ -16,6 +16,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class NexusBlock extends BlockContainer
 {
 
@@ -32,12 +35,12 @@ public class NexusBlock extends BlockContainer
 	{
 		return new TileEntityNexus();
 	}
-	
+
 	public int getRenderType()
 	{
 		return 0x8982;
 	}
-	
+
 	public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int p_149727_6_, float px, float py, float pz)
 	{
 		if (w.getTileEntity(x, y, z) != null)
@@ -61,17 +64,18 @@ public class NexusBlock extends BlockContainer
 									break;
 								}
 							}
-						} 
+						}
 					}
-				} else
+				}
+				else
 				{
 					if (p.isSneaking())
 					{
-						for (int i =2; i >= 0; i--)
+						for (int i = 2; i >= 0; i--)
 						{
 							if (tile.getStackInSlot(i) != null)
 							{
-								MiscUtils.addItemStack(p,((IInventory)w.getTileEntity(x, y, z)).getStackInSlot(i));
+								MiscUtils.addItemStack(p, ((IInventory) w.getTileEntity(x, y, z)).getStackInSlot(i));
 								tile.setInventorySlotContents(i, null);
 								break;
 							}
@@ -81,14 +85,13 @@ public class NexusBlock extends BlockContainer
 			}
 		return true;
 	}
-	
-	
+
 	public void onBlockPlacedBy(World w, int x, int y, int z, EntityLivingBase p, ItemStack i)
 	{
-		 int dir = MathHelper.floor_double((double)((p.rotationYaw * 4F) / 360F) + 0.5D) & 3;
-		 w.setBlockMetadataWithNotify(x, y, z, dir, 0);
+		int dir = MathHelper.floor_double((double) ((p.rotationYaw * 4F) / 360F) + 0.5D) & 3;
+		w.setBlockMetadataWithNotify(x, y, z, dir, 0);
 	}
-	
+
 	/**
 	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
 	 * or not to render the shared face of two adjacent blocks and also whether
@@ -98,8 +101,7 @@ public class NexusBlock extends BlockContainer
 	{
 		return false;
 	}
-	
-	
+
 	public boolean isNormalCube()
 	{
 		return false;

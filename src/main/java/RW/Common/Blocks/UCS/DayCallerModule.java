@@ -1,7 +1,8 @@
 package RW.Common.Blocks.UCS;
 
 import RW.Api.IUCSPart;
-import RW.Api.IUSCModule;
+import RW.Api.IUCSModule;
+import RW.Common.Misc.WorldPos;
 import RW.Common.Registry.MiscRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -10,7 +11,10 @@ import net.minecraft.command.CommandTime;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public class DayCallerModule extends Block implements IUCSPart, IUSCModule
+/**
+ * @author Lord_Crystalyx
+ */
+public class DayCallerModule extends Block implements IUCSPart, IUCSModule
 {
 	public DayCallerModule()
 	{
@@ -32,13 +36,11 @@ public class DayCallerModule extends Block implements IUCSPart, IUSCModule
 	}
 
 	@Override
-	public void performAction(World w, int x, int y, int z,int corex,int corey,int corez)
+	public void performAction(World w, WorldPos bpos, WorldPos corePos)
 	{
-		//if (w.canBlockSeeTheSky(corex, corey, corez))
+		if (w.getWorldTime() < 18000 && w.getWorldTime() > 14000)
 		{
-			CommandTime comm = new CommandTime();
-			comm.processCommand(Minecraft.getMinecraft().thePlayer, new String[]
-			{ "set", "day" });
+			w.setWorldTime(0);
 		}
 	}
 }

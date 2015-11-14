@@ -1,6 +1,3 @@
-/**
- * This Class Created By Lord_Crystalyx.
- */
 package RW.Client.Model;
 
 import org.lwjgl.opengl.GL11;
@@ -14,9 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
 /**
- * Altar - Lord_Crystalyx Created using Tabula 4.1.1
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
  */
-public class Altar extends ModelBase implements IItemRenderer
+public class Altar extends ModelBase
 {
 	public ModelRenderer shape1;
 	public ModelRenderer shape2;
@@ -122,30 +119,5 @@ public class Altar extends ModelBase implements IItemRenderer
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
-	}
-
-	@Override
-	public boolean handleRenderType(ItemStack item, ItemRenderType type)
-	{
-		return true;
-	}
-
-	@Override
-	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
-	{
-		return true;
-	}
-
-	@Override
-	public void renderItem(ItemRenderType type, ItemStack item, Object... data)
-	{
-		GL11.glPushMatrix();
-		GL11.glRotatef(180F, 0F, 0F, 359F);
-		GL11.glTranslatef(0.0F, -2.0F, 0.0F);
-		float scale = 1.0F;
-		GL11.glScalef(2.0F, 2.0F, 2.0F);
-		ModificationAnvilRender.model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(ModificationAnvilRender.textures);
-		GL11.glPopMatrix();
 	}
 }

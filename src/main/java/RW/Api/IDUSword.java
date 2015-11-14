@@ -13,11 +13,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class IDUSword extends ItemSword implements IItemContainsDU
 {
 	public int maxdu = 20000;
 
-	public IDUSword(ToolMaterial mat,int max)
+	public IDUSword(ToolMaterial mat, int max)
 	{
 		super(mat);
 		this.maxdu = max;
@@ -27,6 +30,7 @@ public class IDUSword extends ItemSword implements IItemContainsDU
 	{
 		super(mat);
 	}
+
 	@Override
 	public int addDU(ItemStack i, int du)
 	{
@@ -38,7 +42,8 @@ public class IDUSword extends ItemSword implements IItemContainsDU
 				this.setEnergy(i, this.maxdu);
 				Logger.info("DUAdded");
 				return ret;
-			} else
+			}
+			else
 			{
 				this.setEnergy(i, this.getEnergy(i) + du);
 				Logger.info("DUAdded");
@@ -56,10 +61,11 @@ public class IDUSword extends ItemSword implements IItemContainsDU
 			if (this.getEnergy(i) < du)
 			{
 				int ret = du - this.getEnergy(i);
-				this.setEnergy(i,0);
+				this.setEnergy(i, 0);
 				Logger.info("DUConsumed");
 				return ret;
-			} else
+			}
+			else
 			{
 				int ret = 0;
 				this.setEnergy(i, this.getEnergy(i) - du);
@@ -69,7 +75,7 @@ public class IDUSword extends ItemSword implements IItemContainsDU
 		}
 		return du;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack i, EntityPlayer p, List l, boolean bool)
@@ -79,12 +85,12 @@ public class IDUSword extends ItemSword implements IItemContainsDU
 			l.add(EnumChatFormatting.GRAY + "" + i.getTagCompound().getInteger("Energy") + "/20000 DU");
 		}
 	}
-	
-	public void setEnergy(ItemStack i,int e)
+
+	public void setEnergy(ItemStack i, int e)
 	{
-		i.getTagCompound().setInteger("Energy",e);
+		i.getTagCompound().setInteger("Energy", e);
 	}
-	
+
 	public int getEnergy(ItemStack i)
 	{
 		return i.getTagCompound().getInteger("Energy");
@@ -93,14 +99,14 @@ public class IDUSword extends ItemSword implements IItemContainsDU
 	@Override
 	public void setMax(int i)
 	{
-		this.maxdu=i;
+		this.maxdu = i;
 	}
-	
+
 	public void onUpdate(ItemStack i, World w, Entity e, int p_77663_4_, boolean inhand)
 	{
 		if (i.hasTagCompound())
 		{
-			
+
 		}
 		else
 		{

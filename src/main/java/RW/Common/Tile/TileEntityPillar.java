@@ -14,23 +14,25 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityPillar extends TileEntity implements IInventory
 {
-
 	ItemStack[] inventory = new ItemStack[1];
 	private int syncTick;
-	private int index=0;
-	
+	private int index = 0;
+
 	public void setIndex(int i)
 	{
-		this.index=i;
+		this.index = i;
 	}
-	
+
 	public int getIndex()
 	{
 		return this.index;
 	}
-	
+
 	@Override
 	public int getSizeInventory()
 	{
@@ -71,7 +73,8 @@ public class TileEntityPillar extends TileEntity implements IInventory
 			if (this.inventory[slot].stackSize - count <= 0)
 			{
 				this.inventory[slot] = null;
-			} else
+			}
+			else
 			{
 				this.inventory[slot].stackSize -= count;
 			}
@@ -154,7 +157,6 @@ public class TileEntityPillar extends TileEntity implements IInventory
 			}
 		}
 	}
-	
 
 	public void writeToNBT(NBTTagCompound tag)
 	{

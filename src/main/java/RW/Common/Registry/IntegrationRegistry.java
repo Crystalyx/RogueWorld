@@ -11,22 +11,25 @@ import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class IntegrationRegistry
 {
 
 	public static WandRod AltersteelRod;
 	public static WandCap AtrilliumCap;
-	//public static Aspect Obscr;
+	// public static Aspect Obscr;
 
 	public static IWandRodOnUpdate testUpd = new TestUpd();
-	public static ResourceLocation rod = new ResourceLocation("rogueworld:textures/misc/wand_rod_threesteel.png");
-	
+	public static ResourceLocation rod = new ResourceLocation("rogueworld:textures/misc/model/wand_rod_threesteel.png");
+
 	public static void register()
 	{
 		AtrilliumCap = new WandCap("Atrillium", -40, new ItemStack(ItemRegistry.ACap), 8);
-		AtrilliumCap.setTexture(new ResourceLocation("rogueworld:textures/misc/wand_cap_atrillium.png"));
+		AtrilliumCap.setTexture(new ResourceLocation("rogueworld:textures/misc/model/wand_cap_atrillium.png"));
 		AltersteelRod = new WandRod("Altersteel", 750, new ItemStack(ItemRegistry.ARod), 16, testUpd, rod);
 		AltersteelRod.setGlowing(true);
-		//Obscr = new AspectObscurus();
+		// Obscr = new AspectObscurus();
 	}
 }

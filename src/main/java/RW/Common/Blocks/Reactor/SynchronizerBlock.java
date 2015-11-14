@@ -20,6 +20,9 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class SynchronizerBlock extends ReactorElement
 {
 
@@ -61,7 +64,7 @@ public class SynchronizerBlock extends ReactorElement
 				return this.top_bot;
 		return this.side;
 	}
-	
+
 	public void updateTick(World w, int x, int y, int z, Random r)
 	{
 		int index = 0;
@@ -71,13 +74,13 @@ public class SynchronizerBlock extends ReactorElement
 		}
 		else
 			index = 1;
-		
+
 		w.setBlockMetadataWithNotify(x, y, z, index, 2);
 	}
 
 	public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float px, float py, float pz)
 	{
-		MiscUtils.playerData.get(p.getCommandSenderName()).playerIsSeeker=true;
+		MiscUtils.playerData.get(p.getCommandSenderName()).playerIsSeeker = true;
 		Logger.info(MiscUtils.playerData.get(p.getCommandSenderName()).playerIsSeeker);
 		return false;
 	}

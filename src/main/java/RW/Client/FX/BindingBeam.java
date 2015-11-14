@@ -1,6 +1,3 @@
-/**
- * This Class Created By Lord_Crystalyx.
- */
 package RW.Client.FX;
 
 import org.lwjgl.opengl.GL11;
@@ -17,28 +14,31 @@ import net.minecraft.init.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class BindingBeam extends EntityFX
 {
 
 	public float tickPos;
-	private static final ResourceLocation rwparticleTextures = new ResourceLocation("rogueworld:textures/misc/particles.png");
-	private static final ResourceLocation particleTextures = new ResourceLocation("textures/particle/particles.png");
-	
+	private static final ResourceLocation particleText = new ResourceLocation("rogueworld:textures/misc/particles.png");
+	private static final ResourceLocation sphere = new ResourceLocation("rogueworld:textures/items/sphere_blue.png");
+
 	public int getInt()
 	{
 		return 16;
 	}
-	
+
 	public BindingBeam(World w, double x, double y, double z, double i, double j, double k)
 	{
 		super(w, x, y, z, (i - x) / 2, (j - y + 0.7) / 2, (k - z) / 2);
 		this.tilePosX = x;
 		this.tilePosY = y;
 		this.tilePosZ = z;
-		
-		this.motionX = i - x;// turnToLimit(i-x,0.1D);
-		this.motionY = j - y + 0.7;// turnToLimit(j-y,0.1D);
-		this.motionZ = k - z;// turnToLimit(k-z,0.1D);
+
+		this.motionX = i - x;
+		this.motionY = j - y + 0.7;
+		this.motionZ = k - z;
 		this.rand.nextFloat();
 		this.particleScale = 1F;
 		this.particleGreen = 0.8F;
@@ -47,22 +47,6 @@ public class BindingBeam extends EntityFX
 		this.particleMaxAge = (int) (Math.random() * 10.0D) + 40;
 		this.noClip = true;
 		this.setParticleTextureIndex(getInt());
-	}
-
-	public static double turnToLimit(double i, double limit)
-	{
-		double ret = 0;
-
-		if (i > limit)
-		{
-			ret = i / 2;
-			while (Math.abs(i) > limit)
-			{
-				i = i / 2;
-			}
-		}
-
-		return ret;
 	}
 
 	public BindingBeam(World w, double x, double y, double z, double i, double j, double k, double cR, double cG, double cB)
@@ -100,7 +84,7 @@ public class BindingBeam extends EntityFX
 	private double prevYaw;
 	private double prevPitch;
 	private float length;
-	
+
 	public void renderParticle(Tessellator var3, float par2, float par3, float par4, float par5, float par6, float par7)
 	{
 		var3.draw();
@@ -110,7 +94,7 @@ public class BindingBeam extends EntityFX
 		boolean enabled = GL11.glIsEnabled(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_BLEND);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(rwparticleTextures);
+		Minecraft.getMinecraft().renderEngine.bindTexture(particleText);
 		EntityLivingBase viewer = Minecraft.getMinecraft().thePlayer;
 		if (viewer instanceof EntityPlayer)
 		{
@@ -140,8 +124,8 @@ public class BindingBeam extends EntityFX
 				this.particleAlpha = cA;
 				super.renderParticle(var3, par2, par3, par4, par5, par6, par7);
 				var3.draw();
-			} else 
-				if (((EntityPlayer) viewer).getCurrentArmor(3) != null && ((EntityPlayer) viewer).getCurrentArmor(3).getItem() instanceof Armors)
+			}
+			else if (((EntityPlayer) viewer).getCurrentArmor(3) != null && ((EntityPlayer) viewer).getCurrentArmor(3).getItem() instanceof Armors)
 			{
 				var3.startDrawingQuads();
 
@@ -168,9 +152,6 @@ public class BindingBeam extends EntityFX
 				var3.draw();
 			}
 		}
-
-		Minecraft.getMinecraft().renderEngine.bindTexture(particleTextures);
-
 		if (!enabled)
 			GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);

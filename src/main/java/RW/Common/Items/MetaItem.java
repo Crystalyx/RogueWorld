@@ -16,6 +16,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class MetaItem extends Item
 {
 	protected IIcon[] icons;
@@ -57,5 +60,5 @@ public class MetaItem extends Item
 	{
 		return this.names[i.getItemDamage()];
 	}
-	
+
 }

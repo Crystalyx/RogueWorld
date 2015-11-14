@@ -11,26 +11,30 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class SkillAttack extends Skill
 {
 
-	public SkillAttack(float Sdamage, float Saccuracy, int Srange) 
+	public SkillAttack(float Sdamage, float Saccuracy, int Srange)
 	{
-		super(0, Sdamage,Saccuracy,Srange, "Attack",0,0);
+		super(0, Sdamage, Saccuracy, Srange, "Attack", 0, 0);
 	}
+
 	@Override
-	public Skill useSkillfor0(World w , EntityPlayer p,Entity ent)
+	public Skill useSkillfor0(World w, EntityPlayer p, Entity ent)
 	{
-		if(ent instanceof EntityLiving)
+		if (ent instanceof EntityLiving)
 		{
 			ent.attackEntityFrom(DamageSource.generic.setDamageBypassesArmor(), p.getCurrentEquippedItem().getTagCompound().getFloat("Damage"));
-        	p.getCurrentEquippedItem().setItemDamage(p.getCurrentEquippedItem().getItemDamage()-1);
+			p.getCurrentEquippedItem().setItemDamage(p.getCurrentEquippedItem().getItemDamage() - 1);
 		}
-		if(ent instanceof EntityDragonPart)
+		if (ent instanceof EntityDragonPart)
 		{
-			((EntityDragonPart)ent).entityDragonObj.attackEntityFromPart((EntityDragonPart)ent, DamageSource.generic.setDamageBypassesArmor(), p.getCurrentEquippedItem().getTagCompound().getFloat("Damage"));
+			((EntityDragonPart) ent).entityDragonObj.attackEntityFromPart((EntityDragonPart) ent, DamageSource.generic.setDamageBypassesArmor(), p.getCurrentEquippedItem().getTagCompound().getFloat("Damage"));
 		}
-		return this;		
+		return this;
 	}
-	
+
 }

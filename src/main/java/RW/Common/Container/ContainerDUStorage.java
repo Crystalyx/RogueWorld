@@ -10,6 +10,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class ContainerDUStorage extends Container
 {
 	public TileEntityDUStorage tile;
@@ -49,40 +52,41 @@ public class ContainerDUStorage extends Container
 	}
 
 	/**
-     * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
-     */
-    public ItemStack transferStackInSlot(EntityPlayer p, int tslot)
-    {
-        ItemStack itemstack = null;
-        Slot slot = (Slot)this.inventorySlots.get(tslot);
+	 * Called when a player shift-clicks on a slot. You must override this or
+	 * you will crash when someone does that.
+	 */
+	public ItemStack transferStackInSlot(EntityPlayer p, int tslot)
+	{
+		ItemStack itemstack = null;
+		Slot slot = (Slot) this.inventorySlots.get(tslot);
 
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
+		if (slot != null && slot.getHasStack())
+		{
+			ItemStack itemstack1 = slot.getStack();
+			itemstack = itemstack1.copy();
 
-            if (tslot < tile.getSizeInventory())
-            {
-                if (!this.mergeItemStack(itemstack1, tile.getSizeInventory(), this.inventorySlots.size(), true))
-                {
-                    return null;
-                }
-            }
-            else if (!this.mergeItemStack(itemstack1, 0, tile.getSizeInventory(), false))
-            {
-                return null;
-            }
+			if (tslot < tile.getSizeInventory())
+			{
+				if (!this.mergeItemStack(itemstack1, tile.getSizeInventory(), this.inventorySlots.size(), true))
+				{
+					return null;
+				}
+			}
+			else if (!this.mergeItemStack(itemstack1, 0, tile.getSizeInventory(), false))
+			{
+				return null;
+			}
 
-            if (itemstack1.stackSize == 0)
-            {
-                slot.putStack((ItemStack)null);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
-        }
+			if (itemstack1.stackSize == 0)
+			{
+				slot.putStack((ItemStack) null);
+			}
+			else
+			{
+				slot.onSlotChanged();
+			}
+		}
 
-        return itemstack;
-    }
+		return itemstack;
+	}
 }

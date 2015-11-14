@@ -12,6 +12,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class DarkDeconstructorRender implements ISimpleBlockRenderingHandler
 {
 
@@ -21,18 +24,18 @@ public class DarkDeconstructorRender implements ISimpleBlockRenderingHandler
 		RenderHelper.disableStandardItemLighting();
 
 		GL11.glPushMatrix();
-		
+
 		GL11.glTranslatef(0, 1.0F, 0);
 		GL11.glRotatef(180, 0, 0, 1);
 		GL11.glScalef(0.0625F, 0.0625F, 0.0625F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(textures);
-		model.render((Entity)null, 0.0F,0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		
+		model.render((Entity) null, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+
 		GL11.glPopMatrix();
-		
-    	RenderHelper.enableStandardItemLighting();
+
+		RenderHelper.enableStandardItemLighting();
 	}
-	
+
 	public static DarkGenerator model = new DarkGenerator();
 	public static final ResourceLocation textures = new ResourceLocation("rogueWorld:textures/misc/model/DarkGenerator.png");
 

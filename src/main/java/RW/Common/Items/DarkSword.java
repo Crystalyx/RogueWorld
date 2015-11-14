@@ -19,6 +19,9 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class DarkSword extends IDUSword
 {
 	public DarkSword()
@@ -28,14 +31,14 @@ public class DarkSword extends IDUSword
 		this.setUnlocalizedName("rw.darksword");
 		this.setCreativeTab(MiscRegistry.modTab);
 	}
-	
+
 	public void onUsingTick(ItemStack i, EntityPlayer p, int count)
 	{
-		if(i.getTagCompound() != null)
+		if (i.getTagCompound() != null)
 		{
-			if(SkillRegistry.getSkill(p.getCurrentEquippedItem().getTagCompound().getInteger("CurSkillId")) != null)
-			{				
-				SkillRegistry.getSkill(p.getCurrentEquippedItem().getTagCompound().getInteger("CurSkillId")).attemptToUseSkill(p.worldObj, p, null,2);
+			if (SkillRegistry.getSkill(p.getCurrentEquippedItem().getTagCompound().getInteger("CurSkillId")) != null)
+			{
+				SkillRegistry.getSkill(p.getCurrentEquippedItem().getTagCompound().getInteger("CurSkillId")).attemptToUseSkill(p.worldObj, p, null, 2);
 			}
 		}
 	}
@@ -50,21 +53,21 @@ public class DarkSword extends IDUSword
 			float lev = i.getTagCompound().getInteger("Level");
 			float exp = i.getTagCompound().getFloat("Expirience");
 			l.add(EnumChatFormatting.BLUE + "Level: " + lev);
-			l.add(EnumChatFormatting.AQUA + "Expirience: "	+ exp);
+			l.add(EnumChatFormatting.AQUA + "Expirience: " + exp);
 			l.add(EnumChatFormatting.RED + "Damage: " + Dam);
 
 			if (SkillRegistry.getSkill(i.getTagCompound().getInteger("CurSkillId")) != null)
 			{
 				if (SkillRegistry.getSkill(i.getTagCompound().getInteger("CurSkillId")).lev <= lev)
 				{
-					l.add(EnumChatFormatting.DARK_RED+ "Skill: "+ SkillRegistry.getSkill(i.getTagCompound().getInteger("CurSkillId")).name);
+					l.add(EnumChatFormatting.DARK_RED + "Skill: " + SkillRegistry.getSkill(i.getTagCompound().getInteger("CurSkillId")).name);
 				}
 				else
 				{
-					i.getTagCompound().setBoolean("Skill"+ i.getTagCompound().getInteger("CurSkillId"), false);
+					i.getTagCompound().setBoolean("Skill" + i.getTagCompound().getInteger("CurSkillId"), false);
 				}
 			}
-			l.add(EnumChatFormatting.GRAY + "Cooldown: "+ i.getTagCompound().getInteger("CoolDown")/ 20);
+			l.add(EnumChatFormatting.GRAY + "Cooldown: " + i.getTagCompound().getInteger("CoolDown") / 20);
 			l.add("");
 		}
 		super.addInformation(i, p, l, bool);
@@ -77,7 +80,7 @@ public class DarkSword extends IDUSword
 	@Override
 	public EnumAction getItemUseAction(ItemStack i)
 	{
-		return EnumAction.block;		
+		return EnumAction.block;
 	}
 
 	public NBTTagCompound tag = new NBTTagCompound();
@@ -92,10 +95,9 @@ public class DarkSword extends IDUSword
 				{
 					if (i.getTagCompound().getInteger("CurSkillId") + l >= 10)
 					{
-						if (SkillRegistry.getSkill(i.getTagCompound()
-								.getInteger("CurSkillId") + l - 10) != null)
+						if (SkillRegistry.getSkill(i.getTagCompound().getInteger("CurSkillId") + l - 10) != null)
 						{
-							i.getTagCompound().setInteger("CurSkillId",	i.getTagCompound().getInteger("CurSkillId")+ l - 10);
+							i.getTagCompound().setInteger("CurSkillId", i.getTagCompound().getInteger("CurSkillId") + l - 10);
 							break;
 						}
 					}
@@ -103,7 +105,7 @@ public class DarkSword extends IDUSword
 					{
 						if (SkillRegistry.getSkill(i.getTagCompound().getInteger("CurSkillId") + l) != null)
 						{
-							i.getTagCompound().setInteger("CurSkillId",i.getTagCompound().getInteger("CurSkillId")+ l);
+							i.getTagCompound().setInteger("CurSkillId", i.getTagCompound().getInteger("CurSkillId") + l);
 							break;
 						}
 					}
@@ -112,26 +114,26 @@ public class DarkSword extends IDUSword
 		}
 		else
 		{
-				SkillRegistry.getSkill(p.getCurrentEquippedItem().getTagCompound().getInteger("CurSkillId")).attemptToUseSkill(w,p, null,1);
+			SkillRegistry.getSkill(p.getCurrentEquippedItem().getTagCompound().getInteger("CurSkillId")).attemptToUseSkill(w, p, null, 1);
 		}
 		p.setItemInUse(i, Integer.MAX_VALUE);
 		return i;
 	}
 
-	public void onUpdate(ItemStack i, World w, Entity e, int p_77663_4_,boolean inhand)
+	public void onUpdate(ItemStack i, World w, Entity e, int p_77663_4_, boolean inhand)
 	{
 		if (i.getTagCompound() != null)
 		{
 			if (i.getTagCompound().getInteger("CoolDown") > 0)
 			{
-				i.getTagCompound().setInteger("CoolDown",i.getTagCompound().getInteger("CoolDown") - 1);
+				i.getTagCompound().setInteger("CoolDown", i.getTagCompound().getInteger("CoolDown") - 1);
 			}
 		}
 		else
 		{
-			// 0 for Fire,1 for Earth,2 for Water,3 for Power,4 for Magic,5 for Sky
-			tag.setIntArray("Fragments", new int[]
-			{ 0, 0, 0, 0, 0, 0 });
+			// 0 for Fire,1 for Earth,2 for Water,3 for Power,4 for Magic,5 for
+			// Sky
+			tag.setIntArray("Fragments", new int[] { 0, 0, 0, 0, 0, 0 });
 			tag.setFloat("Expirience", 0);
 			tag.setInteger("Level", 1);
 			tag.setFloat("Damage", 4);

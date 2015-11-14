@@ -17,6 +17,9 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class RogueEventBus
 {
 	NBTTagCompound tag = new NBTTagCompound();
@@ -45,7 +48,8 @@ public class RogueEventBus
 							if (ent.getHealth() - event.entityPlayer.getCurrentEquippedItem().getTagCompound().getFloat("Damage") <= 0)
 							{
 								event.entityPlayer.getCurrentEquippedItem().getTagCompound().setFloat("Expirience", xp);
-							} else
+							}
+							else
 								event.entityPlayer.getCurrentEquippedItem().getTagCompound().setFloat("Expirience", event.entityPlayer.getCurrentEquippedItem().getTagCompound().getFloat("Expirience"));
 						}
 						for (int i = 0; i < 11; i++)
@@ -55,11 +59,13 @@ public class RogueEventBus
 								if (event.entityPlayer.getCurrentEquippedItem().getTagCompound().getInteger("Level") >= SkillRegistry.getSkill(i).lev)
 								{
 									event.entityPlayer.getCurrentEquippedItem().getTagCompound().setBoolean("Skill" + i, true);
-								} else
+								}
+								else
 								{
 									event.entityPlayer.getCurrentEquippedItem().getTagCompound().setBoolean("Skill" + i, false);
 								}
-							} else
+							}
+							else
 							{
 								event.entityPlayer.getCurrentEquippedItem().getTagCompound().setBoolean("Skill" + i, false);
 
@@ -77,7 +83,8 @@ public class RogueEventBus
 						SkillRegistry.getSkill(event.entityPlayer.getCurrentEquippedItem().getTagCompound().getInteger("CurSkillId")).attemptToUseSkill(event.entityPlayer.worldObj, event.entityPlayer, event.target, 0);
 						event.entityPlayer.getCurrentEquippedItem().getTagCompound().setInteger("Energy", E - D);
 
-					} else
+					}
+					else
 					{
 					}
 				}
@@ -101,13 +108,13 @@ public class RogueEventBus
 	{
 		if (event.itemStack != null)
 		{
-			 int[] ids = OreDictionary.getOreIDs(event.itemStack);
-			 for (int l = 0; l < ids.length; l++)
-			 {
-			 event.toolTip.add("" + OreDictionary.getOreName(ids[l]));
-			 }
-			 event.toolTip.add(event.itemStack.getItem().getUnlocalizedName());
-			 event.toolTip.add(""+event.itemStack.getItem().getIdFromItem(event.itemStack.getItem())+":"+event.itemStack.getItemDamage());
+			int[] ids = OreDictionary.getOreIDs(event.itemStack);
+			for (int l = 0; l < ids.length; l++)
+			{
+				event.toolTip.add("" + OreDictionary.getOreName(ids[l]));
+			}
+			event.toolTip.add(event.itemStack.getItem().getUnlocalizedName());
+			event.toolTip.add("" + event.itemStack.getItem().getIdFromItem(event.itemStack.getItem()) + ":" + event.itemStack.getItemDamage());
 		}
 	}
 
@@ -136,7 +143,8 @@ public class RogueEventBus
 									float xp = ((event.block.getExpDrop(event.world, event.blockMetadata, 1) + event.block.getBlockHardness(event.world, event.x, event.y, event.z) * 2) / 2
 											+ event.harvester.getCurrentEquippedItem().getTagCompound().getFloat("Exp"));
 									event.harvester.getCurrentEquippedItem().getTagCompound().setFloat("Exp", xp);
-								} else
+								}
+								else
 								{
 									float xp = ((event.block.getExpDrop(event.world, event.blockMetadata, 1) + event.block.getBlockHardness(event.world, event.x, event.y, event.z) * 2) / 2);
 									event.harvester.getCurrentEquippedItem().getTagCompound().setFloat("Exp", xp);
@@ -155,7 +163,8 @@ public class RogueEventBus
 								event.harvester.getCurrentEquippedItem().getTagCompound().setInteger("Level", event.harvester.getCurrentEquippedItem().getTagCompound().getInteger("Level") + 1);
 							}
 							event.harvester.getCurrentEquippedItem().getTagCompound().setInteger("Energy", E - D);
-						} else
+						}
+						else
 						{
 						}
 					}
@@ -189,7 +198,8 @@ public class RogueEventBus
 								}
 							}
 						}
-					} else
+					}
+					else
 					{
 						event.newSpeed = 0;
 					}
@@ -222,7 +232,8 @@ public class RogueEventBus
 							}
 						}
 
-					} else
+					}
+					else
 					{
 						event.newSpeed = 0;
 					}
@@ -254,7 +265,8 @@ public class RogueEventBus
 									float xp = ((event.block.getExpDrop(event.world, event.blockMetadata, 1) + event.block.getBlockHardness(event.world, event.x, event.y, event.z) * 2) / 2
 											+ event.harvester.getCurrentEquippedItem().getTagCompound().getFloat("Exp"));
 									event.harvester.getCurrentEquippedItem().getTagCompound().setFloat("Exp", xp);
-								} else
+								}
+								else
 								{
 									float xp = ((event.block.getExpDrop(event.world, event.blockMetadata, 1) + event.block.getBlockHardness(event.world, event.x, event.y, event.z) * 2) / 2);
 									event.harvester.getCurrentEquippedItem().getTagCompound().setFloat("Exp", xp);
@@ -268,7 +280,8 @@ public class RogueEventBus
 							}
 							event.harvester.getCurrentEquippedItem().getTagCompound().setInteger("Energy", E - D);
 
-						} else
+						}
+						else
 						{
 						}
 					}

@@ -27,19 +27,22 @@ import net.minecraft.network.play.INetHandlerPlayClient;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityExtractor extends EnergeticTileEntity implements ISidedInventory
 {
 
 	public TileEntityExtractor()
 	{
 		super(0, 200000, "Dark Extractor");
-		this.uname="extractor";
+		this.uname = "extractor";
 	}
-	
-	public TileEntityExtractor(int type,int maxEnergy,String name)
+
+	public TileEntityExtractor(int type, int maxEnergy, String name)
 	{
 		super(type, maxEnergy, name);
-		this.uname="extractor";
+		this.uname = "extractor";
 	}
 
 	public ItemStack[] inv = new ItemStack[8];
@@ -50,12 +53,9 @@ public class TileEntityExtractor extends EnergeticTileEntity implements ISidedIn
 		return 8;
 	}
 
-	private static final int[] slotsTop = new int[]
-	{ 0 };
-	private static final int[] slotsBottom = new int[]
-	{ 2, 3 };
-	private static final int[] slotsSides = new int[]
-	{ 1 };
+	private static final int[] slotsTop = new int[] { 0 };
+	private static final int[] slotsBottom = new int[] { 2, 3 };
+	private static final int[] slotsSides = new int[] { 1 };
 	/** The number of ticks that the furnace will keep burning */
 	public int furnaceBurnTime = 0;
 	public int maxBTime = 200;
@@ -93,13 +93,15 @@ public class TileEntityExtractor extends EnergeticTileEntity implements ISidedIn
 				ItemStack ret = this.inv[slot];
 				this.inv[slot] = null;
 				return ret;
-			} else
+			}
+			else
 			{
 				ItemStack ret = new ItemStack(this.inv[slot].getItem(), count, this.inv[slot].getItemDamage());
 				this.inv[slot].stackSize -= count;
 				return ret;
 			}
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -113,7 +115,8 @@ public class TileEntityExtractor extends EnergeticTileEntity implements ISidedIn
 			ItemStack itemstack = this.inv[slot];
 			this.inv[slot] = null;
 			return itemstack;
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -215,65 +218,65 @@ public class TileEntityExtractor extends EnergeticTileEntity implements ISidedIn
 	{
 		readFromNBT(pkt.func_148857_g());
 	}
-	
-	 /**
-     * Reads a tile entity from NBT.
-     */
-    public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        super.readFromNBT(par1NBTTagCompound);
-        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items",10);
-        this.inv = new ItemStack[this.getSizeInventory()];
-        
-        for (int i = 0; i < nbttaglist.tagCount(); ++i)
-        {
-            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
-            int j = nbttagcompound1.getByte("Slot") & 255;
 
-            if (j >= 0 && j < this.inv.length)
-            {
-                this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-            }
-        }
+	/**
+	 * Reads a tile entity from NBT.
+	 */
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+	{
+		super.readFromNBT(par1NBTTagCompound);
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 10);
+		this.inv = new ItemStack[this.getSizeInventory()];
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i)
+		{
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.getCompoundTagAt(i);
+			int j = nbttagcompound1.getByte("Slot") & 255;
+
+			if (j >= 0 && j < this.inv.length)
+			{
+				this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+			}
+		}
 
 		this.furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
 		this.furnaceCookTime = par1NBTTagCompound.getShort("CookTime");
 		this.currentItemBurnTime = getItemBurnTime(this.inv[1]);
 
-        if (par1NBTTagCompound.hasKey("CustomName"))
-        {
-            this.name = par1NBTTagCompound.getString("CustomName");
-        }
-    }
+		if (par1NBTTagCompound.hasKey("CustomName"))
+		{
+			this.name = par1NBTTagCompound.getString("CustomName");
+		}
+	}
 
-    /**
-     * Writes a tile entity to NBT.
-     */
-    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        super.writeToNBT(par1NBTTagCompound);
-        par1NBTTagCompound.setShort("BurnTime", (short) this.furnaceBurnTime);
-        par1NBTTagCompound.setShort("CookTime", (short) this.furnaceCookTime);
-        NBTTagList nbttaglist = new NBTTagList();
-        
-        for (int i = 0; i < this.inv.length; ++i)
-        {
-            if (this.inv[i] != null)
-            {
-                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-                nbttagcompound1.setByte("Slot", (byte)i);
-                this.inv[i].writeToNBT(nbttagcompound1);
-                nbttaglist.appendTag(nbttagcompound1);
-            }
-        }
+	/**
+	 * Writes a tile entity to NBT.
+	 */
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
+	{
+		super.writeToNBT(par1NBTTagCompound);
+		par1NBTTagCompound.setShort("BurnTime", (short) this.furnaceBurnTime);
+		par1NBTTagCompound.setShort("CookTime", (short) this.furnaceCookTime);
+		NBTTagList nbttaglist = new NBTTagList();
 
-        par1NBTTagCompound.setTag("Items", nbttaglist);
+		for (int i = 0; i < this.inv.length; ++i)
+		{
+			if (this.inv[i] != null)
+			{
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Slot", (byte) i);
+				this.inv[i].writeToNBT(nbttagcompound1);
+				nbttaglist.appendTag(nbttagcompound1);
+			}
+		}
 
-        if (this.hasCustomInventoryName())
-        {
-            par1NBTTagCompound.setString("CustomName", this.name);
-        }
-    }
+		par1NBTTagCompound.setTag("Items", nbttaglist);
+
+		if (this.hasCustomInventoryName())
+		{
+			par1NBTTagCompound.setString("CustomName", this.name);
+		}
+	}
 
 	public boolean isSmelted = false;
 	private int syncTick;
@@ -293,11 +296,13 @@ public class TileEntityExtractor extends EnergeticTileEntity implements ISidedIn
 						{
 							++this.furnaceCookTime;
 							this.consumeEnergy(250 - this.getMaxBurnTime());
-						} else
+						}
+						else
 							this.furnaceCookTime = 0;
 
 					}
-				} else
+				}
+				else
 					this.furnaceCookTime = 0;
 			}
 		}
@@ -329,13 +334,15 @@ public class TileEntityExtractor extends EnergeticTileEntity implements ISidedIn
 								{
 									++this.inv[3].stackSize;
 								}
-							} else
+							}
+							else
 							{
 								this.setInventorySlotContents(3, new ItemStack(Blocks.log, 1));
 							}
 						}
 					}
-				} else
+				}
+				else
 				{
 					this.setInventorySlotContents(2, new ItemStack(ItemRegistry.DCryst));
 
@@ -413,7 +420,8 @@ public class TileEntityExtractor extends EnergeticTileEntity implements ISidedIn
 		if (i == null)
 		{
 			return 0;
-		} else
+		}
+		else
 		{
 			if (i.getItem() == Items.diamond)
 			{

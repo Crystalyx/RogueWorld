@@ -4,6 +4,8 @@
 
 package RW.Network;
 
+import java.util.List;
+
 import RW.Api.EnergeticTileEntity;
 import RW.Client.FX.BindingBeam;
 import RW.Client.Render.BaseMobRenderer;
@@ -12,12 +14,14 @@ import RW.Client.Render.EnergyTowerRender;
 import RW.Client.Render.GraviterRender;
 import RW.Client.Render.ModificationAnvilRender;
 import RW.Client.Render.NexusRender;
+import RW.Client.Render.SphereRender;
 import RW.Client.Render.TileEntityPillarRender;
 import RW.Client.Render.Block.StorageRenderer;
 import RW.Client.Render.Block.SynchronizerRender;
 import RW.Client.Render.Block.TessBlockRender;
 import RW.Client.Render.Block.TuberRender;
 import RW.Client.Render.Tessellator.TessRender;
+import RW.Common.Container.ContainerAdvSphere;
 import RW.Common.Container.ContainerAffixer;
 import RW.Common.Container.ContainerDUStorage;
 import RW.Common.Container.ContainerDarkDeconstructor;
@@ -25,7 +29,9 @@ import RW.Common.Container.ContainerEnergetic;
 import RW.Common.Container.ContainerExtractor;
 import RW.Common.Container.ContainerReactor;
 import RW.Common.Container.ContainerTower;
+import RW.Common.Entity.EntityAdventureSphere;
 import RW.Common.Entity.EntityFireSpark;
+import RW.Common.Player.SphereInventory;
 import RW.Common.Tile.GraviterTileEntity;
 import RW.Common.Tile.TessTileEntity;
 import RW.Common.Tile.TileEntityAffixer;
@@ -42,56 +48,64 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class CommonProxy implements IGuiHandler
 {
 	@SuppressWarnings("unchecked")
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world,	int x, int y, int z) 
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		if(ID==0)
+		if (ID == 0)
 		{
 			TileEntityExtractor tile = (TileEntityExtractor) world.getTileEntity(x, y, z);
 			return new ContainerExtractor(player.inventory, tile);
 		}
-		if(ID==1)
+		if (ID == 1)
 		{
 			return new ContainerReactor((TileEntityReactorCore) world.getTileEntity(x, y, z), player.inventory);
 		}
-		if(ID==2)
+		if (ID == 2)
 		{
 			return new ContainerEnergetic(player.inventory, (EnergeticTileEntity) world.getTileEntity(x, y, z));
 		}
-		if(ID==3)
+		if (ID == 3)
 		{
 			return new ContainerTower(player.inventory, (TileEntityEnergyTower) world.getTileEntity(x, y, z));
 		}
-		if(ID==4)
+		if (ID == 4)
 		{
 			return new ContainerDarkDeconstructor(player.inventory, (TileEntityDarkDeconstructor) world.getTileEntity(x, y, z));
 		}
-		if(ID==5)
+		if (ID == 5)
 		{
 			return new ContainerAffixer(player.inventory, (TileEntityAffixer) world.getTileEntity(x, y, z));
 		}
-		if(ID==6)
+		if (ID == 6)
 		{
 			return new ContainerDUStorage(player.inventory, (TileEntityDUStorage) world.getTileEntity(x, y, z));
 		}
+		if (ID == 7)
+		{
+			return new ContainerAdvSphere(player.inventory, new SphereInventory(player));
+		}
 		return null;
 	}
-	
+
 	public void registerSpecialRenderer()
 	{
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModificationAnvil.class,new ModificationAnvilRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPillar.class,new TileEntityPillarRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnergyTower.class,new EnergyTowerRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDarkDeconstructor.class,new DarkDeconstructorRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TessTileEntity.class,new TessRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(GraviterTileEntity.class,new GraviterRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNexus.class,new NexusRender());
-		RenderingRegistry.registerBlockHandler(new TuberRender());//TileEntityNexus
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModificationAnvil.class, new ModificationAnvilRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPillar.class, new TileEntityPillarRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnergyTower.class, new EnergyTowerRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDarkDeconstructor.class, new DarkDeconstructorRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TessTileEntity.class, new TessRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(GraviterTileEntity.class, new GraviterRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNexus.class, new NexusRender());
+		RenderingRegistry.registerBlockHandler(new TuberRender());// TileEntityNexus
 		RenderingRegistry.registerBlockHandler(new RW.Client.Render.Block.ModificationAnvilRender());
 		RenderingRegistry.registerBlockHandler(new RW.Client.Render.Block.DarkDeconstructorRender());
 		RenderingRegistry.registerBlockHandler(new RW.Client.Render.Block.EnergyTowerRender());
@@ -101,16 +115,18 @@ public class CommonProxy implements IGuiHandler
 		RenderingRegistry.registerBlockHandler(new SynchronizerRender());
 		RenderingRegistry.registerBlockHandler(new StorageRenderer());
 		RenderingRegistry.registerBlockHandler(new TessBlockRender());
- 
-		RenderingRegistry.registerEntityRenderingHandler(EntityFireSpark.class, new BaseMobRenderer(null,1.0F, null));
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityFireSpark.class, new BaseMobRenderer(null, 1.0F, null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAdventureSphere.class, new SphereRender());
+
 	}
-	
+
 	public void registerTiles()
 	{
-		ClientRegistry.registerTileEntity(TileEntityModificationAnvil.class,"rogueWorld:TileModificationAnvil",new ModificationAnvilRender());
-		ClientRegistry.registerTileEntity(TileEntityPillar.class,"rogueWorld:TileEntityPillar",new TileEntityPillarRender());
-		ClientRegistry.registerTileEntity(TileEntityEnergyTower.class,"rogueWorld:TileEntityEnergyTower",new EnergyTowerRender());
-		ClientRegistry.registerTileEntity(TileEntityDarkDeconstructor.class,"rogueWorld:TileEntityDarkDeconstructor",new DarkDeconstructorRender());
+		ClientRegistry.registerTileEntity(TileEntityModificationAnvil.class, "rogueWorld:TileModificationAnvil", new ModificationAnvilRender());
+		ClientRegistry.registerTileEntity(TileEntityPillar.class, "rogueWorld:TileEntityPillar", new TileEntityPillarRender());
+		ClientRegistry.registerTileEntity(TileEntityEnergyTower.class, "rogueWorld:TileEntityEnergyTower", new EnergyTowerRender());
+		ClientRegistry.registerTileEntity(TileEntityDarkDeconstructor.class, "rogueWorld:TileEntityDarkDeconstructor", new DarkDeconstructorRender());
 
 	}
 
@@ -118,7 +134,7 @@ public class CommonProxy implements IGuiHandler
 	{
 		return null;
 	}
-	
+
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
@@ -127,9 +143,9 @@ public class CommonProxy implements IGuiHandler
 
 	public void spawnParticle(String name, double x, double y, double z, double i, double j, double k)
 	{
-		if(name.equals("energyFX"))
+		if (name.equals("energyFX"))
 			Minecraft.getMinecraft().effectRenderer.addEffect(new BindingBeam(getClientWorld(), x, y, z, i, j, k));
-		
+
 	}
 
 	public World getClientWorld()
@@ -139,17 +155,17 @@ public class CommonProxy implements IGuiHandler
 
 	public void EnergyFX(double... ds)
 	{
-		
+
 	}
 
-	public void SparkFX(double ... ds)
+	public void SparkFX(double... ds)
 	{
-		
+
 	}
 
 	public void openBookGUIForPlayer()
 	{
-		
+
 	}
 
 }

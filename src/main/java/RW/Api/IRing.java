@@ -6,27 +6,30 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public interface IRing {
 	
-	public abstract void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5);
+	public abstract void onUpdate(ItemStack i, World w, Entity e);
 	
-	public abstract String getSpeedModifierName(ItemStack par1ItemStack);
+	public abstract String getSpeedModifierName(ItemStack i);
 	
-	public abstract float getSpeedModifierValue(ItemStack par1ItemStack);
+	public abstract float getSpeedModifier(ItemStack i);
 	
-	public abstract float setDamage(ItemStack par1ItemStack,EntityPlayer p, float am);
+	public abstract float setDamage(ItemStack i,EntityPlayer p, RogueData data);
 	
-	public abstract float setFallDistance(ItemStack par1ItemStack,EntityPlayer p, float am);
+	public abstract float setFallDistance(ItemStack i,EntityPlayer p, RogueData data);
 	
-	public abstract void setJump(ItemStack par1ItemStack,EntityPlayer p);
+	public abstract void setJump(ItemStack i,EntityPlayer p, RogueData data);
 	
-	public abstract void onArtUpdate(ItemStack par1ItemStack,EntityPlayer p);
+	public abstract void onItemUpdate(ItemStack i,EntityPlayer p);
 	
-	public abstract float setDamageOnAttack(ItemStack par1ItemStack,EntityPlayer p,EntityLivingBase base, float am);
+	public abstract float setDamageOnAttack(ItemStack i,EntityPlayer p,EntityLivingBase entl, RogueData data);
 
-	public abstract float getKnockbackModifierValue(ItemStack par1ItemStack);
+	public abstract float getKnockbackModifierValue(ItemStack i);
 	
-	public abstract boolean performJump(ItemStack par1ItemStack,EntityPlayer p);
+	public abstract boolean performJump(ItemStack i,EntityPlayer p);
 	
-	public abstract boolean holdJump(ItemStack par1ItemStack,EntityPlayer p);
+	public abstract boolean holdJump(ItemStack i,EntityPlayer p);
 }

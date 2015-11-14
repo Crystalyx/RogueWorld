@@ -9,9 +9,12 @@ import java.util.List;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.IChatComponent;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class ChatComponent implements IChatComponent
 {
-	
+
 	public String text = "";
 
 	public ChatComponent(String string)
@@ -28,7 +31,7 @@ public class ChatComponent implements IChatComponent
 	@Override
 	public IChatComponent setChatStyle(ChatStyle style)
 	{
-		return new ChatComponent(style.getFormattingCode()+this.text);
+		return new ChatComponent(style.getFormattingCode() + this.text);
 	}
 
 	@Override
@@ -40,7 +43,7 @@ public class ChatComponent implements IChatComponent
 	@Override
 	public IChatComponent appendText(String txt)
 	{
-		return new ChatComponent(txt+this.text);
+		return new ChatComponent(txt + this.text);
 	}
 
 	@Override

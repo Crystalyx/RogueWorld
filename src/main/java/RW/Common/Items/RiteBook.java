@@ -17,6 +17,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class RiteBook extends Item
 {
 	public RiteBook()
@@ -46,7 +49,7 @@ public class RiteBook extends Item
 	{
 		MiscUtils.playerData.get(p.getCommandSenderName()).addPatronage(20);
 		p.openGui(RogueWorldCore.core, 85951, w, x, y, z);
-		
+
 		return true;
 	}
 }

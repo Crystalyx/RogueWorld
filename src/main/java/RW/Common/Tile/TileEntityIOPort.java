@@ -10,6 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityIOPort extends IStructurePart implements ISidedInventory
 {
 	public ItemStack[] inventory = new ItemStack[1];
@@ -31,7 +34,7 @@ public class TileEntityIOPort extends IStructurePart implements ISidedInventory
 	{
 
 	}
-	
+
 	@Override
 	public void performAction(int x, int y, int z)
 	{
@@ -182,7 +185,7 @@ public class TileEntityIOPort extends IStructurePart implements ISidedInventory
 		}
 		if (side == k || side == l)
 			return new int[] { 0 };
-		return new int[] {0};
+		return new int[] { 0 };
 	}
 
 	@Override

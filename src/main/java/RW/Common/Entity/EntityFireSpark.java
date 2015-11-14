@@ -24,6 +24,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class EntityFireSpark extends Entity implements IProjectile
 {
 	private int field_145795_e = -1;
@@ -105,16 +108,17 @@ public class EntityFireSpark extends Entity implements IProjectile
 		if (!this.worldObj.isRemote && (this.shootingEntity != null && this.shootingEntity.isDead || !this.worldObj.blockExists((int) this.posX, (int) this.posY, (int) this.posZ)))
 		{
 			this.setDead();
-		} else
+		}
+		else
 		{
 			super.onUpdate();
 			List<Entity> entities = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.posX - 2.0F, this.posY - 2.0F, this.posZ - 2.0F, this.posX + 2.0F, this.posY + 2.0F, this.posZ + 2.0F));
 			for (int l = 0; l < entities.size(); l++)
 			{
 				entities.get(l).attackEntityFrom(DamageSource.generic.setDamageBypassesArmor(), this.damage);
-				if(entities.get(l) instanceof EntityDragonPart)
+				if (entities.get(l) instanceof EntityDragonPart)
 				{
-					((EntityDragonPart)entities.get(l)).entityDragonObj.attackEntityFromPart((EntityDragonPart) entities.get(l), DamageSource.generic.setDamageBypassesArmor(), this.damage);
+					((EntityDragonPart) entities.get(l)).entityDragonObj.attackEntityFromPart((EntityDragonPart) entities.get(l), DamageSource.generic.setDamageBypassesArmor(), this.damage);
 				}
 			}
 
@@ -138,7 +142,8 @@ public class EntityFireSpark extends Entity implements IProjectile
 				this.motionZ *= (double) (this.rand.nextFloat() * 0.2F);
 				this.ticksAlive = 0;
 				this.ticksInAir = 0;
-			} else
+			}
+			else
 			{
 				++this.ticksInAir;
 			}
@@ -219,8 +224,8 @@ public class EntityFireSpark extends Entity implements IProjectile
 			this.motionZ *= (double) f2;
 			if (this.worldObj.isRemote)
 			{
-				this.worldObj.spawnParticle("smoke", this.posX, this.posY  - 1.5D, this.posZ, 0.0D, 0.0D, 0.0D);
-				RogueWorldCore.proxy.spawnParticle("spark", this.posX, this.posY -1.5D, this.posZ, 0.0D, 0.0D, 0.0D);
+				this.worldObj.spawnParticle("smoke", this.posX, this.posY - 1.5D, this.posZ, 0.0D, 0.0D, 0.0D);
+				RogueWorldCore.proxy.spawnParticle("spark", this.posX, this.posY - 1.5D, this.posZ, 0.0D, 0.0D, 0.0D);
 			}
 			this.setPosition(this.posX, this.posY, this.posZ);
 		}
@@ -262,8 +267,7 @@ public class EntityFireSpark extends Entity implements IProjectile
 		p_70014_1_.setShort("zTile", (short) this.field_145794_g);
 		p_70014_1_.setByte("inTile", (byte) Block.getIdFromBlock(this.field_145796_h));
 		p_70014_1_.setByte("inGround", (byte) (this.inGround ? 1 : 0));
-		p_70014_1_.setTag("direction", this.newDoubleNBTList(new double[]
-		{ this.motionX, this.motionY, this.motionZ }));
+		p_70014_1_.setTag("direction", this.newDoubleNBTList(new double[] { this.motionX, this.motionY, this.motionZ }));
 	}
 
 	/**
@@ -283,7 +287,8 @@ public class EntityFireSpark extends Entity implements IProjectile
 			this.motionX = nbttaglist.func_150309_d(0);
 			this.motionY = nbttaglist.func_150309_d(1);
 			this.motionZ = nbttaglist.func_150309_d(2);
-		} else
+		}
+		else
 		{
 			this.setDead();
 		}
@@ -311,7 +316,8 @@ public class EntityFireSpark extends Entity implements IProjectile
 		if (this.isEntityInvulnerable())
 		{
 			return false;
-		} else
+		}
+		else
 		{
 			this.setBeenAttacked();
 
@@ -335,7 +341,8 @@ public class EntityFireSpark extends Entity implements IProjectile
 				}
 
 				return true;
-			} else
+			}
+			else
 			{
 				return false;
 			}

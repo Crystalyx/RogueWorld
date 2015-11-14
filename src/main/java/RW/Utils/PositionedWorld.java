@@ -5,6 +5,9 @@ import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class PositionedWorld
 {
 	World world;
@@ -23,9 +26,9 @@ public class PositionedWorld
 	{
 		return this.world.getBlock((int) pos.getX(), (int) pos.getY(), (int) pos.getZ());
 	}
-	
-	public void setBlock(WorldPos pos, Block b,int meta)
+
+	public void setBlock(WorldPos pos, Block b, int meta)
 	{
-		this.world.setBlock((int) pos.getX(), (int) pos.getY(), (int) pos.getZ(),b,meta,2);
+		this.world.setBlock((int) pos.getX(), (int) pos.getY(), (int) pos.getZ(), b, meta, 2);
 	}
 }

@@ -16,6 +16,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class ModificationAnvil extends BlockContainer
 {
 
@@ -79,11 +82,12 @@ public class ModificationAnvil extends BlockContainer
 									break;
 								}
 							}
-						} else
+						}
+						else
 						{
 							if (p.getCurrentEquippedItem().getItem() == ItemRegistry.RiteBook)
 							{
-//								if (!w.isRemote)
+								// if (!w.isRemote)
 								{
 									if (!tile.isCrafting)
 									{
@@ -97,7 +101,8 @@ public class ModificationAnvil extends BlockContainer
 							}
 						}
 					}
-				} else
+				}
+				else
 				{
 					if (p.isSneaking())
 					{
@@ -105,7 +110,7 @@ public class ModificationAnvil extends BlockContainer
 						{
 							if (tile.getStackInSlot(i) != null)
 							{
-								MiscUtils.addItemStack(p,tile.getStackInSlot(i));
+								MiscUtils.addItemStack(p, tile.getStackInSlot(i));
 								tile.setInventorySlotContents(i, null);
 								break;
 							}
@@ -123,14 +128,12 @@ public class ModificationAnvil extends BlockContainer
 			}
 		return true;
 	}
-	
-	
 
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
-	
+
 	public int getRenderType()
 	{
 		return 0x8977;

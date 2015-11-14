@@ -7,6 +7,9 @@ import RW.Common.Registry.MiscRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class AtrilliumBlock extends Block
 {
 

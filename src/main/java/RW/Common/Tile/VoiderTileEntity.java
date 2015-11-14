@@ -12,13 +12,16 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class VoiderTileEntity extends TileEntity
 {
 	public VoiderTileEntity()
 	{
 		super();
 	}
-	
+
 	@Override
 	public Packet getDescriptionPacket()
 	{
@@ -32,7 +35,7 @@ public class VoiderTileEntity extends TileEntity
 	{
 		readFromNBT(pkt.func_148857_g());
 	}
-	
+
 	public void updateEntity()
 	{
 		double rx = this.worldObj.rand.nextDouble() * 10;
@@ -44,8 +47,10 @@ public class VoiderTileEntity extends TileEntity
 			ry *= -1;
 		if (this.worldObj.rand.nextBoolean())
 			rz *= -1;
-		//RogueWorldCore.proxy.spawnParticle("energyFX", this.xCoord + 0.5F, this.yCoord - 0.5F, this.zCoord + 0.5F, this.xCoord + rx, this.yCoord + ry, this.zCoord + rz);
-		
+		// RogueWorldCore.proxy.spawnParticle("energyFX", this.xCoord + 0.5F,
+		// this.yCoord - 0.5F, this.zCoord + 0.5F, this.xCoord + rx, this.yCoord
+		// + ry, this.zCoord + rz);
+
 		double radius = 40;
 		List<Entity> ents = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord - radius, this.yCoord - radius, this.zCoord - radius, this.xCoord + radius, this.yCoord + radius, this.zCoord + radius));
 		for (Entity entl : ents)
@@ -61,26 +66,27 @@ public class VoiderTileEntity extends TileEntity
 				{
 					var11 *= var11;
 					entl.motionX += var20 / var9 * var11 * 0.15D;
-					entl.motionY += -100;//var22 / var9 * var11 * 0.25D;
+					entl.motionY += var22 / var9 * var11 * 0.25D;
 					entl.motionZ += var25 / var9 * var11 * 0.15D;
 				}
-				
-				if(entl.posX>= this.xCoord && entl.posX <= this.xCoord+1.0F)
+
+				if (entl.posX >= this.xCoord && entl.posX <= this.xCoord + 1.0F)
 				{
-					entl.motionX=0;
+					entl.motionX = 0;
 				}
-				
-				if(entl.posY>= this.yCoord && entl.posY <= this.yCoord+1.0F)
+
+				if (entl.posY >= this.yCoord && entl.posY <= this.yCoord + 1.0F)
 				{
-					entl.motionY=0;
+					entl.motionY = 0;
 				}
-				
-				if(entl.posZ>= this.zCoord && entl.posZ <= this.zCoord+1.0F)
+
+				if (entl.posZ >= this.zCoord && entl.posZ <= this.zCoord + 1.0F)
 				{
-					entl.motionZ=0;
+					entl.motionZ = 0;
 				}
-				
-			} else
+
+			}
+			else
 			{
 				EntityPlayer p = (EntityPlayer) entl;
 				if (p.getCurrentArmor(3) != null)
@@ -88,7 +94,8 @@ public class VoiderTileEntity extends TileEntity
 					if (MiscUtils.playerData.get(p.getCommandSenderName()).playerIsSeeker)
 					{
 
-					} else
+					}
+					else
 					{
 						double var20 = ((double) this.xCoord + 0.5D - entl.posX) / 15.0D;
 						double var22 = ((double) this.yCoord + 0.5D - entl.posY) / 15.0D;
@@ -103,7 +110,8 @@ public class VoiderTileEntity extends TileEntity
 							entl.motionZ += var25 / var9 * var11 * 0.15D;
 						}
 					}
-				} else
+				}
+				else
 				{
 					double var20 = ((double) this.xCoord + 0.5D - entl.posX) / 15.0D;
 					double var22 = ((double) this.yCoord + 0.5D - entl.posY) / 15.0D;

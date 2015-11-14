@@ -2,7 +2,10 @@ package RW.Common.Tile;
 
 import RW.Api.EnergeticTileEntity;
 import RW.Common.Items.ElementalShard;
+import RW.Common.Misc.WorldPos;
 import RW.Common.Registry.ItemRegistry;
+import RW.Core.RogueWorldCore;
+import RW.Utils.MathUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,39 +14,43 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class TileEntityAffixer extends EnergeticTileEntity
 {
 
 	public ItemStack[] inva = new ItemStack[6];
 	private int maxBTime = 2000;
-	public int Btime=0;
+	public int Btime = 0;
+
 	public TileEntityAffixer()
 	{
 		super(0, 20000, "Affixer");
-		this.uname="affixer";
+		this.uname = "affixer";
 	}
-	
+
 	public void updateEntity()
 	{
-		if(this.inva[0] != null && this.inva[1] != null)
+		if (this.inva[0] != null && this.inva[1] != null)
 		{
-			if(this.inva[0].getItem() == ItemRegistry.DSword && this.inva[1].getItem() == ItemRegistry.EShard)
+			if (this.inva[0].getItem() == ItemRegistry.DSword && this.inva[1].getItem() == ItemRegistry.EShard)
 			{
-				if(this.Btime < this.getMaxBurnTime())
+				if (this.Btime < this.getMaxBurnTime())
 				{
 					++this.Btime;
 				}
 				else
 				{
-					this.Btime=0;
-					if(this.inva[0].hasTagCompound())
+					this.Btime = 0;
+					if (this.inva[0].hasTagCompound())
 					{
-						this.inva[0].getTagCompound().setInteger(ElementalShard.names[this.inva[1].getItemDamage()], this.inva[0].getTagCompound().getInteger(ElementalShard.names[this.inva[1].getItemDamage()])+1);
+						this.inva[0].getTagCompound().setInteger(ElementalShard.names[this.inva[1].getItemDamage()], this.inva[0].getTagCompound().getInteger(ElementalShard.names[this.inva[1].getItemDamage()]) + 1);
 					}
 					else
 					{
 						NBTTagCompound tag = new NBTTagCompound();
-						tag.setInteger(ElementalShard.names[this.inva[1].getItemDamage()], this.inva[0].getTagCompound().getInteger(ElementalShard.names[this.inva[1].getItemDamage()])+1);
+						tag.setInteger(ElementalShard.names[this.inva[1].getItemDamage()], this.inva[0].getTagCompound().getInteger(ElementalShard.names[this.inva[1].getItemDamage()]) + 1);
 						this.inva[0].setTagCompound(tag);
 					}
 					decrStackSize(1, 1);
@@ -51,13 +58,13 @@ public class TileEntityAffixer extends EnergeticTileEntity
 			}
 		}
 	}
-	
+
 	@Override
 	public ItemStack getStackInSlot(int slot)
 	{
 		return this.inva[slot];
 	}
-	
+
 	@Override
 	public ItemStack decrStackSize(int slot, int count)
 	{
@@ -68,13 +75,15 @@ public class TileEntityAffixer extends EnergeticTileEntity
 				ItemStack ret = this.inva[slot];
 				this.inva[slot] = null;
 				return ret;
-			} else
+			}
+			else
 			{
 				ItemStack ret = new ItemStack(this.inva[slot].getItem(), count, this.inva[slot].getItemDamage());
 				this.inva[slot].stackSize -= count;
 				return ret;
 			}
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -88,7 +97,8 @@ public class TileEntityAffixer extends EnergeticTileEntity
 			ItemStack itemstack = this.inva[slot];
 			this.inva[slot] = null;
 			return itemstack;
-		} else
+		}
+		else
 		{
 			return null;
 		}
@@ -146,17 +156,17 @@ public class TileEntityAffixer extends EnergeticTileEntity
 	{
 		return true;
 	}
-	
+
 	public int getMaxBurnTime()
 	{
-		int ret = this.maxBTime  - (count(new ItemStack(ItemRegistry.metai, 1, 1)) * 60);
-		if (ret<200)
-		{
-			ret = 200;
-		}
+		int ret = this.maxBTime - (count(new ItemStack(ItemRegistry.metai, 1, 1)) * 60);
+//		if (ret < 200)
+//		{
+//			ret = 200;
+//		}
 		return ret;
 	}
-	
+
 	@Override
 	public int count(ItemStack i)
 	{
@@ -173,7 +183,7 @@ public class TileEntityAffixer extends EnergeticTileEntity
 		}
 		return count;
 	}
-	
+
 	public void readFromNBT(NBTTagCompound tag)
 	{
 		super.readFromNBT(tag);
@@ -210,7 +220,6 @@ public class TileEntityAffixer extends EnergeticTileEntity
 
 		tag.setTag("Items", nbttaglist);
 	}
-	
 
 	@Override
 	public Packet getDescriptionPacket()

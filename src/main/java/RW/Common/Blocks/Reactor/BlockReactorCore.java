@@ -13,6 +13,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class BlockReactorCore extends BlockContainer
 {
 
@@ -35,7 +38,7 @@ public class BlockReactorCore extends BlockContainer
 	{
 		if (p.getCurrentEquippedItem() != null)
 		{
-			if(p.getCurrentEquippedItem().getItem() == ItemRegistry.wrench)
+			if (p.getCurrentEquippedItem().getItem() == ItemRegistry.wrench)
 			{
 				return false;
 			}

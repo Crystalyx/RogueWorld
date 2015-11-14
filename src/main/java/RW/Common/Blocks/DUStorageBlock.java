@@ -14,13 +14,16 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class DUStorageBlock extends BlockContainer
 {
 
 	public DUStorageBlock()
 	{
 		super(Material.anvil);
-		this.setBlockBounds(0.0625F, 0.0625F,0.0625F, 0.9375F, 0.9375F, 0.9375F);
+		this.setBlockBounds(0.0625F, 0.0625F, 0.0625F, 0.9375F, 0.9375F, 0.9375F);
 		this.setCreativeTab(MiscRegistry.modTab);
 		this.setBlockName("rw.storage");
 		this.setResistance(1.0F);
@@ -32,36 +35,37 @@ public class DUStorageBlock extends BlockContainer
 	{
 		return new TileEntityDUStorage();
 	}
-	
+
 	public IIcon top;
 	public IIcon side;
 
 	@Override
 	public IIcon getIcon(int bside, int meta)
 	{
-			if(bside == ForgeDirection.UP.ordinal() || bside == ForgeDirection.DOWN.ordinal())
-				return top;
-			else
-				return side;
+		if (bside == ForgeDirection.UP.ordinal() || bside == ForgeDirection.DOWN.ordinal())
+			return top;
+		else
+			return side;
 	}
+
 	@Override
 	public void registerBlockIcons(IIconRegister ir)
 	{
 		top = ir.registerIcon("rogueWorld:storage/storage_top");
 		side = ir.registerIcon("rogueWorld:storage/storage_side");
 	}
-	
+
 	public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int meta, float px, float py, float pz)
 	{
-		if(!p.isSneaking())
+		if (!p.isSneaking())
 		{
-			if(p.getCurrentEquippedItem() != null)
-			{ 
-				if(p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
+			if (p.getCurrentEquippedItem() != null)
+			{
+				if (p.getCurrentEquippedItem().getItem() == ItemRegistry.linkingRod)
 				{
 					return false;
 				}
-			}		
+			}
 			p.openGui(RogueWorldCore.core, 6, w, x, y, z);
 		}
 		else
@@ -71,19 +75,18 @@ public class DUStorageBlock extends BlockContainer
 		}
 		return true;
 	}
-	
+
 	@Override
-    public int getRenderType()
-    {
-        return 0x8984;
-    }
-	
+	public int getRenderType()
+	{
+		return 0x8984;
+	}
+
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
-	
-	
+
 	public boolean isNormalCube()
 	{
 		return false;

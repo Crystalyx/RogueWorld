@@ -1,6 +1,3 @@
-/**
- * This Class Created By Lord_Crystalyx.
- */
 package RW.Client.FX;
 
 import org.lwjgl.opengl.GL11;
@@ -17,11 +14,14 @@ import net.minecraft.init.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class Spark extends EntityFX
 {
 
 	public float tickPos;
-	private static final ResourceLocation rwparticleTextures = new ResourceLocation("rogueworld:textures/misc/particles.png");
+	private static final ResourceLocation particleText = new ResourceLocation("rogueworld:textures/misc/particles.png");
 	private static final ResourceLocation particleTextures = new ResourceLocation("textures/particle/particles.png");
 
 	public Spark(World w, double x, double y, double z, double i, double j, double k)
@@ -102,7 +102,7 @@ public class Spark extends EntityFX
 		boolean enabled = GL11.glIsEnabled(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_BLEND);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(rwparticleTextures);
+		Minecraft.getMinecraft().renderEngine.bindTexture(particleText);
 
 		EntityLivingBase viewer = Minecraft.getMinecraft().thePlayer;
 		if (viewer instanceof EntityPlayer)

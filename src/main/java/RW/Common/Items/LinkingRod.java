@@ -23,6 +23,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class LinkingRod extends Item
 {
 	public LinkingRod()
@@ -82,7 +85,8 @@ public class LinkingRod extends Item
 							i.getTagCompound().setInteger("Dim", p.dimension);
 
 						}
-					} else
+					}
+					else
 					{
 
 						if (w.getTileEntity(x, y, z) instanceof TileEntityDUStorage)
@@ -110,7 +114,8 @@ public class LinkingRod extends Item
 							}
 					}
 			}
-		} else
+		}
+		else
 		{
 			i.getTagCompound().removeTag("BlockX");
 			i.getTagCompound().removeTag("BlockY");
@@ -159,7 +164,8 @@ public class LinkingRod extends Item
 			{
 				l.add("Bound to: X = " + i.getTagCompound().getInteger("BlockX") + "; Y = " + i.getTagCompound().getInteger("BlockY") + "; Z = " + i.getTagCompound().getInteger("BlockZ") + ";");
 				l.add("In Dimension: " + i.getTagCompound().getInteger("Dim"));
-			} else
+			}
+			else
 				l.add("Not Bound");
 		}
 	}

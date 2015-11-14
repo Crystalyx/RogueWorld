@@ -2,6 +2,7 @@ package RW.Client.Render;
 
 import org.lwjgl.opengl.GL11;
 
+import DummyCore.Utils.DrawUtils;
 import RW.Client.Model.SeekerAltar;
 import RW.Common.Tile.TileEntityNexus;
 import RW.Utils.MiscUtils;
@@ -15,6 +16,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * @author Lord_Crystalyx Created using Tabula 4.1.1
+ */
 public class NexusRender extends TileEntitySpecialRenderer
 {
 
@@ -105,28 +109,10 @@ public class NexusRender extends TileEntitySpecialRenderer
 
 		rotation = rotation + 360F / tilee.getWorldObj().getWorldTime() % 360;
 		GL11.glPushMatrix();
-		renderItemStackOnNexus(tilee.getStackInSlot(0), tilee.xCoord + 0.5D, tilee.yCoord + 2D, tilee.zCoord + 0.5D, x, y + 0.5D,z, 90, 90F, 0.625F, 0.225F, 0.5F);
-		MiscUtils.renderItemStack_Full(tilee.getStackInSlot(1), tilee.xCoord + 0.5D, tilee.yCoord + 2D, tilee.zCoord + 0.5D, x, y + 0.85D, z, rotation, 0F, 1, 1, 1, 0.5F, 0.375F, 0.5F);
-		MiscUtils.renderItemStack_Full(tilee.getStackInSlot(2), tilee.xCoord + 0.5D, tilee.yCoord + 2D, tilee.zCoord + 0.5D, x, y + 0.85D, z, rotation, 0F, 1, 1, 1, 0.5F, 0.375F, 0.5F);
+		DrawUtils.renderItemStack_Full(tilee.getStackInSlot(0), tilee.xCoord + 0.5D, tilee.yCoord + 2D, tilee.zCoord + 0.5D,x, y + 0.5D, z, rotation, 0F, 1, 1, 1, 0.625F, 0.225F, 0.5F,true);
 
 		GL11.glPopMatrix();
 
 		RenderHelper.enableStandardItemLighting();
-	}
-
-	public void renderItemStackOnNexus(ItemStack stk, double posX, double posY, double posZ, double screenPosX, double screenPosY, double screenPosZ, float rotationX,float rotationZ,
-			float offsetX, float offsetY, float offsetZ)
-	{
-		if(stk != null)
-		{
-			if(stk.getItem() instanceof ItemBlock)
-			{
-				MiscUtils.renderItemStack_Full(stk, posX, posY,posZ, screenPosX, screenPosY, screenPosZ, 0F, 0F, 1, 1, 1, 0.5F, 0.325F, 0.5F);
-			}
-			else
-			{
-				MiscUtils.renderItemStack_Full(stk, posX, posY,posZ, screenPosX, screenPosY, screenPosZ, rotationX, rotationZ, 1, 1, 1, offsetX, offsetY, offsetZ);
-			}
-		}
 	}
 }

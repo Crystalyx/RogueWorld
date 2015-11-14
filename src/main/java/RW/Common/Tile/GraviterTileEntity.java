@@ -16,6 +16,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
+/**
+ * @author Lord_Crystalyx
+ */
 public class GraviterTileEntity extends TileEntity
 {
 	public int cooldown = 0;
@@ -24,7 +27,7 @@ public class GraviterTileEntity extends TileEntity
 	{
 		super();
 	}
-	
+
 	public void updateEntity()
 	{
 		double rx = this.worldObj.rand.nextDouble() * 10;
@@ -48,22 +51,29 @@ public class GraviterTileEntity extends TileEntity
 			{
 				if (!(entl instanceof EntityPlayer))
 				{
-					entl.motionX *=5;
-					entl.motionZ *=5;
+					entl.motionX *= 5;
+					entl.motionZ *= 5;
 					entl.motionY = 0.00005;
-				} else
+				}
+				else
 				{
 					EntityPlayer p = (EntityPlayer) entl;
 					if (p.getCurrentArmor(3) != null)
 					{
-						if (/**p.getCurrentArmor(3).getItem() == ItemRegistry.AtrArmor[0] ||**/ MiscUtils.playerData.get(p.getCommandSenderName()).playerIsSeeker)
+						if (/**
+							 * p.getCurrentArmor(3).getItem() ==
+							 * ItemRegistry.AtrArmor[0] ||
+							 **/
+						MiscUtils.playerData.get(p.getCommandSenderName()).playerIsSeeker)
 						{
-							
-						} else
+
+						}
+						else
 						{
 							entl.motionY = 0.00005;
 						}
-					} else
+					}
+					else
 					{
 						entl.motionY = 0.00005;
 					}
@@ -91,7 +101,7 @@ public class GraviterTileEntity extends TileEntity
 					entl.motionY = 0.03;
 					entl.motionZ *= 0;
 				}
-				entl.fallDistance=0;
+				entl.fallDistance = 0;
 			}
 
 			// entl.setVelocity(this.xCoord-entl.posX+0.5,
